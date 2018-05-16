@@ -2,27 +2,26 @@
 #include "filler.h"
 #include "filler.h"
 
-int main(/*int argc, char **argv*/)
+int main(void)
 {
   int i;
   int j;
   int k;
   int fd;
-  int fd1;
+  //int fd1;
   char *buf;
 
   i = 0;
   j = 0;
   k = 0;
-  //argc = 1;
   params.player_number = 'O';
   //fd = open(argv[1], O_RDONLY);
-  fd1 = open("res", O_WRONLY);
+  //fd1 = open("res", O_WRONLY);
   fd = 0;
   while (get_next_line(fd, &buf))
   {
-    write(fd1, buf, ft_strlen(buf));
-    write(fd1, "\n", 1);
+    //write(fd1, buf, ft_strlen(buf));
+    //write(fd1, "\n", 1);
     if (ft_strstr(buf, "vlikhotk") && ft_strstr(buf, "p2"))
       params.player_number = 'X';
     if (ft_strstr(buf, "Plateau"))
@@ -42,8 +41,6 @@ int main(/*int argc, char **argv*/)
   //ft_printf("%d\n", params.x_board );
   //ft_printf("%d\n", params.y_board );
   get_next_line(fd, &buf);
-  write(fd1, buf, ft_strlen(buf));
-  write(fd1, "\n", 1);
   i = 0;
   params.board = (char **)malloc(sizeof(char *) * params.x_board);
   while (i < params.x_board)
@@ -58,8 +55,6 @@ int main(/*int argc, char **argv*/)
     j = 0;
     k = 4;
     get_next_line(fd, &buf);
-    write(fd1, buf, ft_strlen(buf));
-    write(fd1, "\n", 1);
     while (k < params.y_board + 4)
     {
       params.board[i][j] = buf[k];
@@ -70,8 +65,6 @@ int main(/*int argc, char **argv*/)
     i++;
 	}
   get_next_line(fd, &buf);
-  write(fd1, buf, ft_strlen(buf));
-  write(fd1, "\n", 1);
   i = 0;
   while (buf[i] > '9')
     i++;
@@ -88,7 +81,7 @@ int main(/*int argc, char **argv*/)
   while (i < params.x_figure)
   {
     params.figure[i] = (char *)malloc(params.y_figure + 1);
-    params.figure[i][params.y_figure] = 0;
+    //params.figure[i][params.y_figure] = 0;
     //params.figure[i] = NULL;
     i++;
   }
@@ -97,8 +90,6 @@ int main(/*int argc, char **argv*/)
   {
     j = 0;
     get_next_line(fd, &buf);
-    write(fd1, buf, ft_strlen(buf));
-    write(fd1, "\n", 1);
     while (j < params.y_figure)
     {
       params.figure[i][j] = buf[j];
@@ -117,14 +108,12 @@ int main(/*int argc, char **argv*/)
       break;
     i++;
   }
-  //ft_printf("%d\n", i);
-  //ft_printf("%d\n", j);
   ft_printf("%d %d\n", i, j);
-  i = 0;
+  /*i = 0;
   while (i < params.x_figure)
     free(params.figure[i++]);
-  free(params.figure);
-  i = 0;
+  free(params.figure);*/
+  /*i = 0;
   while ()
   {
     get_next_line(fd, &buf);
@@ -164,5 +153,5 @@ int main(/*int argc, char **argv*/)
       //ft_printf("1%s\n", params.figure[i]);
       i++;
     }
-  }
+  }*/
 }
