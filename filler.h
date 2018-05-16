@@ -17,18 +17,33 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-typedef	struct	s_list
+typedef	struct	s_params
 {
   int player_number;
+  int oppos_number;
   int x_board;
   int y_board;
   int x_figure;
   int y_figure;
   char **board;
   char **figure;
+  int x_diff;
+  int y_diff;
+}				t_params;
+
+t_params params;
+
+typedef	struct	s_list
+{
+	void			*content;
+	struct s_list	*next;
 }				t_list;
 
-t_list params;
+typedef struct	s_coordinate
+{
+	int x;
+	int y;
+}				t_coordinate;
 
 int		get_next_line(const int fd, char **line);
 int		ft_printf(const char *format, ...);
@@ -37,5 +52,8 @@ char		**ft_strsplit(char const *s, char c);
 int			ft_atoi(const char *str);
 char	**two_dim_arr_mem(char **field, int x, int y, char c);
 size_t		ft_strlen(const char *s);
+
+void	coordinatemin(t_coordinate *c, int size);
+char	*ft_strsub(char const *s, unsigned int start, size_t len);
 
 #endif
