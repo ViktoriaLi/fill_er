@@ -1,3 +1,5 @@
+$$$ exec p1 : [resources/players/vlikhotk.filler]
+$$$ exec p2 : [resources/players/grati.filler]
 Plateau 15 17:
     01234567890123456
 000 .................

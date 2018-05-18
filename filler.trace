@@ -1,6 +1,6 @@
-seed = 3108
-O: timedout
-resources/players/vlikhotk.filler: Segfault at 1
+seed = 726
+O: error on input
+resources/players/vlikhotk.filler: Segfault at 0
 resources/players/grati.filler won
 Score:
-1AGAINST143
+0AGAINST141
