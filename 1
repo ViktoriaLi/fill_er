@@ -24,15 +24,10 @@ Plateau 15 17:
 012 ..............X..
 013 .................
 014 .................
-Piece 2 3:
-.**
-...
-Player with O: error on input
-resources/players/vlikhotk.filler: Segfault at 0
-Piece 2 3:
-..*
-.**
-<got (X): [11, 13]
+Piece 2 1:
+*
+*
+<got (O): [8, 2]
 Plateau 15 17:
     01234567890123456
 000 .................
@@ -43,11 +38,18 @@ Plateau 15 17:
 005 .................
 006 .................
 007 .................
-008 ..O..............
-009 .................
+008 ..o..............
+009 ..o..............
 010 .................
-011 ...............x.
-012 ..............xx.
+011 .................
+012 ..............X..
+013 .................
+014 .................
+Piece 2 3:
+.**
+...
+Player with X: timedout
+.............xx.
 013 .................
 014 .................
 Piece 2 3:
@@ -422,67 +424,68 @@ Plateau 15 17:
 012 ..............XX.
 013 .................
 014 .................
-Piece 1 2:
-**
-<got (X): [0, 15]
-Plateau 15 17:
-    01234567890123456
-000 ...............xx
-001 ..............XXX
-002 ...............XX
-003 ..............XXX
-004 ..............XX.
-005 ..............XX.
-006 ..............X..
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+Piece .................
+001 .................
+002 .................
+003 ..........xxxXXXX
+004 ............XXXX.
+005 ...........XX....
+006 ...........XXXXXX
+007 ...............X.
+008 ..O............X.
+009 ...............X.
+010 .............XXX.
+011 .............XXXX
+012 .............XXXX
 013 .................
 014 .................
-Piece 1 2:
-**
-<got (X): [0, 14]
+Piece 2 2:
+.*
+.*
+<got (X): [2, 15]
 Plateau 15 17:
     01234567890123456
-000 ..............xxX
-001 ..............XXX
-002 ...............XX
-003 ..............XXX
-004 ..............XX.
-005 ..............XX.
-006 ..............X..
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+000 .................
+001 .................
+002 ................x
+003 ..........XXXXXXx
+004 ............XXXX.
+005 ...........XX....
+006 ...........XXXXXX
+007 ...............X.
+008 ..O............X.
+009 ...............X.
+010 .............XXX.
+011 .............XXXX
+012 .............XXXX
+013 .................
+014 .................
+Piece 2 3:
+*..
+*..
+<got (X): [2, 14]
+Plateau 15 17:
+    01234567890123456
+000 .................
+001 .................
+002 ..............x.X
+003 ..........XXXXxXX
+004 ............XXXX.
+005 ...........XX....
+006 ...........XXXXXX
+007 ...............X.
+008 ..O............X.
+009 ...............X.
+010 .............XXX.
+011 .............XXXX
+012 .............XXXX
 013 .................
 014 .................
 Piece 2 1:
 *
 *
-<got (X): [1, 14]
-Plateau 15 17:
-    01234567890123456
-000 ..............XXX
-001 ..............xXX
-002 ..............xXX
-003 ..............XXX
-004 ..............XX.
-005 ..............XX.
-006 ..............X..
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
+Player with X: timedout
+14 .................
 Piece 2 1:
 *
 *
@@ -846,324 +849,326 @@ Plateau 15 17:
 002 ............XXXXX
 003 ..............XXX
 004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+005 .............009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
 013 .................
 014 .................
-Piece 1 2:
+Piece 2 2:
 **
-<got (X): [0, 3]
-Plateau 15 17:
-    01234567890123456
-000 ...xxXXXXXXXXXXXX
-001 ...XXXXXXXXXXXXXX
-002 ............XXXXX
-003 ..............XXX
-004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 1 3:
-***
-<got (X): [0, 1]
-Plateau 15 17:
-    01234567890123456
-000 .xxxXXXXXXXXXXXXX
-001 ...XXXXXXXXXXXXXX
-002 ............XXXXX
-003 ..............XXX
-004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 1 2:
-**
+.*
 <got (X): [0, 0]
 Plateau 15 17:
     01234567890123456
 000 xxXXXXXXXXXXXXXXX
-001 ...XXXXXXXXXXXXXX
-002 ............XXXXX
-003 ..............XXX
-004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
+001 .x...XXXXXXXXXXXX
+002 ...........XX.XXX
+003 ................X
+004 .............XXXX
+005 ..............XX.
+006 .............XXXX
+007 .............XXXX
 008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
 013 .................
 014 .................
 Piece 2 2:
 **
-..
-<got (X): [1, 2]
+.*
+<got (X): [1, 4]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
-001 ..xxXXXXXXXXXXXXX
-002 ............XXXXX
-003 ..............XXX
-004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
+001 .X..xxXXXXXXXXXXX
+002 .....x.....XX.XXX
+003 ................X
+004 .............XXXX
+005 ..............XX.
+006 .............XXXX
+007 .............XXXX
 008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 2 3:
-**.
-*..
-<got (X): [1, 1]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 .xxXXXXXXXXXXXXXX
-002 .x..........XXXXX
-003 ..............XXX
-004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 2 3:
-.**
-..*
-<got (X): [2, 10]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 .XXXXXXXXXXXXXXXX
-002 .X.........xxXXXX
-003 ............x.XXX
-004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
 013 .................
 014 .................
 Piece 2 2:
 *.
-**
-<got (X): [1, 9]
+*.
+<got (X): [0, 3]
+Plateau 15 17:
+    01234567890123456
+000 XXXxXXXXXXXXXXXXX
+001 .X.xXXXXXXXXXXXXX
+002 .....X.....XX.XXX
+003 ................X
+004 .............XXXX
+005 ..............XX.
+006 .............XXXX
+007 .............XXXX
+008 ..O.........XXX..
+009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
+013 .................
+014 .................
+Piece 2 3:
+**.
+***
+<got (X): [1, 2]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
-001 .XXXXXXXXxXXXXXXX
-002 .X.......xxXXXXXX
-003 ............X.XXX
-004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
+001 .XxxXXXXXXXXXXXXX
+002 ..xxxX.....XX.XXX
+003 ................X
+004 .............XXXX
+005 ..............XX.
+006 .............XXXX
+007 .............XXXX
 008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
+013 .................
+014 .................
+Piece 2 7:
+.***...
+..**...
+<got (X): [2, 8]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 .XXXXXXXXXXXXXXXX
+002 ..XXXX...xxxX.XXX
+003 ..........xx....X
+004 .............XXXX
+005 ..............XX.
+006 .............XXXX
+007 .............XXXX
+008 ..O.........XXX..
+009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
 013 .................
 014 .................
 Piece 1 3:
-**.
+***
+<got (X): [2, 7]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 .XXXXXXXXXXXXXXXX
+002 ..XXXX.xxxXXX.XXX
+003 ..........XX....X
+004 .............XXXX
+005 ..............XX.
+006 .............XXXX
+007 .............XXXX
+008 ..O.........XXX..
+009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
+013 .................
+014 .................
+Piece 1 2:
+**
 <got (X): [1, 0]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
 001 xxXXXXXXXXXXXXXXX
-002 .X.......XXXXXXXX
-003 ............X.XXX
-004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
+002 ..XXXX.XXXXXX.XXX
+003 ..........XX....X
+004 .............XXXX
+005 ..............XX.
+006 .............XXXX
+007 .............XXXX
 008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 1 3:
-.**
-<got (X): [2, 7]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 .X......xxXXXXXXX
-003 ............X.XXX
-004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 2 3:
-*..
-***
-<got (X): [1, 5]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXxXXXXXXXXXXX
-002 .X...xxxXXXXXXXXX
-003 ............X.XXX
-004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 2 2:
-.*
-.*
-<got (X): [1, 3]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXxXXXXXXXXXXXX
-002 .X..xXXXXXXXXXXXX
-003 ............X.XXX
-004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
 013 .................
 014 .................
 Piece 2 1:
 *
 *
-<got (X): [1, 3]
+<got (X): [1, 13]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
-001 XXXxXXXXXXXXXXXXX
-002 .X.xXXXXXXXXXXXXX
-003 ............X.XXX
-004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
+001 XXXXXXXXXXXXXxXXX
+002 ..XXXX.XXXXXXxXXX
+003 ..........XX....X
+004 .............XXXX
+005 ..............XX.
+006 .............XXXX
+007 .............XXXX
 008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
 013 .................
 014 .................
-Piece 2 3:
-**.
-.**
-<got (X): [2, 2]
+Piece 1 2:
+**
+<got (X): [2, 6]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
 001 XXXXXXXXXXXXXXXXX
-002 .XxxXXXXXXXXXXXXX
-003 ...xx.......X.XXX
-004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
+002 ..XXXXxxXXXXXXXXX
+003 ..........XX....X
+004 .............XXXX
+005 ..............XX.
+006 .............XXXX
+007 .............XXXX
 008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
 013 .................
 014 .................
 Piece 2 3:
-**.
-***
+.**
+...
 <got (X): [2, 0]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
 001 XXXXXXXXXXXXXXXXX
-002 xxXXXXXXXXXXXXXXX
-003 xxxXX.......X.XXX
-004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
+002 .xxXXXXXXXXXXXXXX
+003 ..........XX....X
+004 .............XXXX
+005 ..............XX.
+006 .............XXXX
+007 .............XXXX
 008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
+013 .................
+014 .................
+Piece 2 2:
+..
+**
+<got (X): [1, 0]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 xxXXXXXXXXXXXXXXX
+003 ..........XX....X
+004 .............XXXX
+005 ..............XX.
+006 .............XXXX
+007 .............XXXX
+008 ..O.........XXX..
+009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
+013 .................
+014 .................
+Piece 2 2:
+*.
+*.
+<got (X): [2, 15]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXxX
+003 ..........XX...xX
+004 .............XXXX
+005 ..............XX.
+006 .............XXXX
+007 .............XXXX
+008 ..O.........XXX..
+009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
 013 .................
 014 .................
 Piece 1 3:
 ***
-<got (X): [3, 11]
+<got (X): [3, 13]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
 001 XXXXXXXXXXXXXXXXX
 002 XXXXXXXXXXXXXXXXX
-003 XXXXX......xxxXXX
-004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
+003 ..........XX.xxxX
+004 .............XXXX
+005 ..............XX.
+006 .............XXXX
+007 .............XXXX
 008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
 013 .................
+014 .................
+Piece 1 2:
+**
+<got (X): [3, 12]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 ..........XXxxXXX
+004 .............XXXX
+005 ..............XX.
+006 .............XXXX
+007 .............XXXX
+008 ..O.........XXX..
+009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
+013 .................
+014 .................
+Piece 1 3:
+**.
+<got (X): [3, 9]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 .........xxXXXXXX
+004 .............XXXX
+005 ..............XX.
+006 .............XXXX
+007 .............XXXX
+008 ..O.........XXX..
+009 ............XXXXX
+010 ...........XXXXX.
+011 ...........XXXXXX
+012 ..............X..
+013 .................
+014 .................
+Piece 2 3:
+**.
+.*.
+Player with X: timedout
+
 014 .................
 Piece 1 3:
 .**
@@ -1265,133 +1270,174 @@ Plateau 15 17:
 010 .........XXXXXXXX
 011 ..............XX.
 012 ..............XX.
-013 .................
-014 .................
-Piece 1 2:
-**
-<got (X): [3, 5]
+013 ..............013 ..............01*...
+***
+<got (X): [3, 14]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
 001 XXXXXXXXXXXXXXXXX
 002 XXXXXXXXXXXXXXXXX
-003 XXXXXxxXXXXXXXXXX
+003 .XX.XXXXXXXXXXXXX
+004 ..............xxx
+005 ...............XX
+006 ............XXXXX
+007 ..............XXX
+008 ..O............XX
+009 ...............XX
+010 ................X
+011 ..............XXX
+012 ..............X..
+013 .................
+014 .................
+Piece 2 1:
+*
+*
+<got (X): [2, 3]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXxXXXXXXXXXXXXX
+003 .XXxXXXXXXXXXXXXX
 004 ..............XXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 1 3:
-.**
-<got (X): [4, 12]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 .............xxXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+005 ...............XX
+006 ............XXXXX
+007 ..............XXX
+008 ..O............XX
+009 ...............XX
+010 ................X
+011 ..............XXX
+012 ..............X..
 013 .................
 014 .................
 Piece 2 2:
-*.
-*.
+.*
+.*
 <got (X): [3, 12]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
 001 XXXXXXXXXXXXXXXXX
 002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXxXXXX
-004 ............xXXXX
-005 ..............XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+003 .XXXXXXXXXXXXxXXX
+004 .............xXXX
+005 ...............XX
+006 ............XXXXX
+007 ..............XXX
+008 ..O............XX
+009 ...............XX
+010 ................X
+011 ..............XXX
+012 ..............X..
 013 .................
 014 .................
 Piece 2 3:
-***
-***
-<got (X): [4, 10]
+...
+.**
+<got (X): [3, 11]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
 001 XXXXXXXXXXXXXXXXX
 002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 ..........xxxXXXX
-005 ..........xxx.XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+003 .XXXXXXXXXXXXXXXX
+004 ............xxXXX
+005 ...............XX
+006 ............XXXXX
+007 ..............XXX
+008 ..O............XX
+009 ...............XX
+010 ................X
+011 ..............XXX
+012 ..............X..
 013 .................
 014 .................
 Piece 2 2:
-*.
-*.
-<got (X): [3, 9]
+.*
+.*
+<got (X): [3, 10]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
 001 XXXXXXXXXXXXXXXXX
 002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXxXXXXXXX
-004 .........xXXXXXXX
-005 ..........XXX.XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+003 .XXXXXXXXXXxXXXXX
+004 ...........xXXXXX
+005 ...............XX
+006 ............XXXXX
+007 ..............XXX
+008 ..O............XX
+009 ...............XX
+010 ................X
+011 ..............XXX
+012 ..............X..
 013 .................
 014 .................
-Piece 1 2:
+Piece 2 2:
 **
-<got (X): [4, 8]
+..
+<got (X): [3, 0]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 xxXXXXXXXXXXXXXXX
+004 ...........XXXXXX
+005 ...............XX
+006 ............XXXXX
+007 ..............XXX
+008 ..O............XX
+009 ...............XX
+010 ................X
+011 ..............XXX
+012 ..............X..
+013 .................
+014 .................
+Piece 2 2:
+..
+**
+<got (X): [3, 10]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
 001 XXXXXXXXXXXXXXXXX
 002 XXXXXXXXXXXXXXXXX
 003 XXXXXXXXXXXXXXXXX
-004 ........xxXXXXXXX
-005 ..........XXX.XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+004 ..........xxXXXXX
+005 ...............XX
+006 ............XXXXX
+007 ..............XXX
+008 ..O............XX
+009 ...............XX
+010 ................X
+011 ..............XXX
+012 ..............X..
 013 .................
 014 .................
 Piece 2 3:
 **.
+**.
+<got (X): [4, 9]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 XXXXXXXXXXXXXXXXX
+004 .........xxXXXXXX
+005 .........xx....XX
+006 ............XXXXX
+007 ..............XXX
+008 ..O............XX
+009 ...............XX
+010 ................X
+011 ..............XXX
+012 ..............X..
+013 .................
+014 .................
+Piece 1 3:
 ***
 <got (X): [4, 7]
 Plateau 15 17:
@@ -1400,20 +1446,19 @@ Plateau 15 17:
 001 XXXXXXXXXXXXXXXXX
 002 XXXXXXXXXXXXXXXXX
 003 XXXXXXXXXXXXXXXXX
-004 .......xxXXXXXXXX
-005 .......xxxXXX.XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+004 .......xxxXXXXXXX
+005 .........XX....XX
+006 ............XXXXX
+007 ..............XXX
+008 ..O............XX
+009 ...............XX
+010 ................X
+011 ..............XXX
+012 ..............X..
 013 .................
 014 .................
-Piece 2 3:
+Piece 1 3:
 .**
-...
 <got (X): [4, 5]
 Plateau 15 17:
     01234567890123456
@@ -1422,183 +1467,40 @@ Plateau 15 17:
 002 XXXXXXXXXXXXXXXXX
 003 XXXXXXXXXXXXXXXXX
 004 ......xxXXXXXXXXX
-005 .......XXXXXX.XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+005 .........XX....XX
+006 ............XXXXX
+007 ..............XXX
+008 ..O............XX
+009 ...............XX
+010 ................X
+011 ..............XXX
+012 ..............X..
 013 .................
 014 .................
-Piece 2 3:
-..*
-.**
-<got (X): [3, 3]
+Piece 2 1:
+*
+*
+<got (X): [3, 5]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
 001 XXXXXXXXXXXXXXXXX
 002 XXXXXXXXXXXXXXXXX
 003 XXXXXxXXXXXXXXXXX
-004 ....xxXXXXXXXXXXX
-005 .......XXXXXX.XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+004 .....xXXXXXXXXXXX
+005 .........XX....XX
+006 ............XXXXX
+007 ..............XXX
+008 ..O............XX
+009 ...............XX
+010 ................X
+011 ..............XXX
+012 ..............X..
 013 .................
 014 .................
 Piece 2 3:
-*..
-**.
-<got (X): [3, 2]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXxXXXXXXXXXXXXXX
-004 ..xxXXXXXXXXXXXXX
-005 .......XXXXXX.XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 1 2:
-**
-<got (X): [4, 1]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 .xxXXXXXXXXXXXXXX
-005 .......XXXXXX.XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 2 2:
-**
-..
-<got (X): [4, 0]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 xxXXXXXXXXXXXXXXX
-005 .......XXXXXX.XXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 1 2:
-**
-<got (X): [5, 13]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 XXXXXXXXXXXXXXXXX
-005 .......XXXXXXxxXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 2 1:
-*
-*
-<got (X): [4, 6]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 XXXXXXxXXXXXXXXXX
-005 ......xXXXXXXXXXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 1 3:
-.**
-<got (X): [5, 4]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 XXXXXXXXXXXXXXXXX
-005 .....xxXXXXXXXXXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 1 2:
-**
-<got (X): [5, 4]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 XXXXXXXXXXXXXXXXX
-005 ....xxXXXXXXXXXXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 2 1:
-*
-*
+***
+***
 <got (X): [4, 3]
 Plateau 15 17:
     01234567890123456
@@ -1606,21 +1508,45 @@ Plateau 15 17:
 001 XXXXXXXXXXXXXXXXX
 002 XXXXXXXXXXXXXXXXX
 003 XXXXXXXXXXXXXXXXX
-004 XXXxXXXXXXXXXXXXX
-005 ...xXXXXXXXXXXXXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
+004 ...xxxXXXXXXXXXXX
+005 ...xxx...XX....XX
+006 ............XXXXX
+007 ..............XXX
+008 ..O............XX
+009 ...............XX
+010 ................X
+011 ..............XXX
+012 ..............X..
 013 .................
 014 .................
-Piece 2 3:
-.**
-...
-<got (X): [5, 1]
+Piece 2 1:
+*
+*
+<got (X): [3, 2]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 XXxXXXXXXXXXXXXXX
+004 ..xXXXXXXXXXXXXXX
+005 ...XXX...XX....XX
+006 ............XXXXX
+007 ..............XXX
+008 ..O............XX
+009 ...............XX
+010 ................X
+011 ..............XXX
+012 ..............X..
+013 .................
+014 .................
+Piece 1 3:
+***
+.............
+Piece 2 2:
+**
+**
+<got (X): [6, 13]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
@@ -1628,20 +1554,83 @@ Plateau 15 17:
 002 XXXXXXXXXXXXXXXXX
 003 XXXXXXXXXXXXXXXXX
 004 XXXXXXXXXXXXXXXXX
-005 ..xxXXXXXXXXXXXXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
+005 XXXXXXXXXXXXXXXXX
+006 ....X...X...XxxXX
+007 .............xxX.
+008 ..O............X.
+009 ...............X.
+010 ...............X.
+011 ...............X.
+012 ..............XX.
+013 .................
+014 .................
+Piece 2 2:
+..
+**
+<got (X): [5, 11]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 XXXXXXXXXXXXXXXXX
+004 XXXXXXXXXXXXXXXXX
+005 XXXXXXXXXXXXXXXXX
+006 ....X...X..xxXXXX
+007 .............XXX.
+008 ..O............X.
+009 ...............X.
+010 ...............X.
+011 ...............X.
+012 ..............XX.
+013 .................
+014 .................
+Piece 2 1:
+*
+*
+<got (X): [5, 10]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 XXXXXXXXXXXXXXXXX
+004 XXXXXXXXXXXXXXXXX
+005 XXXXXXXXXXxXXXXXX
+006 ....X...X.xXXXXXX
+007 .............XXX.
+008 ..O............X.
+009 ...............X.
+010 ...............X.
+011 ...............X.
+012 ..............XX.
+013 .................
+014 .................
+Piece 2 3:
+**.
+.**
+<got (X): [6, 9]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 XXXXXXXXXXXXXXXXX
+004 XXXXXXXXXXXXXXXXX
+005 XXXXXXXXXXXXXXXXX
+006 ....X...XxxXXXXXX
+007 ..........xx.XXX.
+008 ..O............X.
+009 ...............X.
+010 ...............X.
+011 ...............X.
 012 ..............XX.
 013 .................
 014 .................
 Piece 2 2:
 **
 ..
-<got (X): [5, 1]
+<got (X): [6, 7]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
@@ -1649,21 +1638,40 @@ Plateau 15 17:
 002 XXXXXXXXXXXXXXXXX
 003 XXXXXXXXXXXXXXXXX
 004 XXXXXXXXXXXXXXXXX
-005 .xxXXXXXXXXXXXXXX
-006 ..............X.X
-007 ..............X..
-008 ..O.........XXX..
-009 .........XXXX....
-010 .........XXXXXXXX
-011 ..............XX.
+005 XXXXXXXXXXXXXXXXX
+006 ....X..xxXXXXXXXX
+007 ..........XX.XXX.
+008 ..O............X.
+009 ...............X.
+010 ...............X.
+011 ...............X.
+012 ..............XX.
+013 .................
+014 .................
+Piece 1 2:
+**
+<got (X): [6, 6]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 XXXXXXXXXXXXXXXXX
+004 XXXXXXXXXXXXXXXXX
+005 XXXXXXXXXXXXXXXXX
+006 ....X.xxXXXXXXXXX
+007 ..........XX.XXX.
+008 ..O............X.
+009 ...............X.
+010 ...............X.
+011 ...............X.
 012 ..............XX.
 013 .................
 014 .................
 Piece 2 2:
-.*
+..
 **
-<got (X): [5, 12]
-Plateau 15 17:
+au 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
 001 XXXXXXXXXXXXXXXXX
@@ -2107,94 +2115,29 @@ Plateau 15 17:
 010 .........XXXXXXXX
 011 ..............XX.
 012 ..............XX.
+013 ..........
+.**
+<got (X): [7, 10]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 XXXXXXXXXXXXXXXXX
+004 XXXXXXXXXXXXXXXXX
+005 XXXXXXXXXXXXXXXXX
+006 XXXXXXXXXXXXXXXXX
+007 XXXXXXXXXXXXXXXXX
+008 ..O........xxXXXX
+009 ............XXX..
+010 ............XXXXX
+011 ..............XX.
+012 .............XXX.
 013 .................
 014 .................
 Piece 2 3:
-***
+...
 .**
-<got (X): [8, 14]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 XXXXXXXXXXXXXXXXX
-005 XXXXXXXXXXXXXXXXX
-006 XXXXXXXXXXXXXXXXX
-007 ...XXXXXXXXXXXXXX
-008 ..O.........XXxxx
-009 .........XXXX..xx
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 2 3:
-..*
-.**
-<got (X): [6, 0]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 XXXXXXXXXXXXXXXXX
-005 XXXXXXXXXXXXXXXXX
-006 XXxXXXXXXXXXXXXXX
-007 .xxXXXXXXXXXXXXXX
-008 ..O.........XXXXX
-009 .........XXXX..XX
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 1 2:
-**
-<got (X): [7, 0]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 XXXXXXXXXXXXXXXXX
-005 XXXXXXXXXXXXXXXXX
-006 XXXXXXXXXXXXXXXXX
-007 xxXXXXXXXXXXXXXXX
-008 ..O.........XXXXX
-009 .........XXXX..XX
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 2 2:
-*.
-*.
-<got (X): [7, 11]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 XXXXXXXXXXXXXXXXX
-005 XXXXXXXXXXXXXXXXX
-006 XXXXXXXXXXXXXXXXX
-007 XXXXXXXXXXXxXXXXX
-008 ..O........xXXXXX
-009 .........XXXX..XX
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 2 2:
-*.
-**
 <got (X): [7, 9]
 Plateau 15 17:
     01234567890123456
@@ -2205,18 +2148,39 @@ Plateau 15 17:
 004 XXXXXXXXXXXXXXXXX
 005 XXXXXXXXXXXXXXXXX
 006 XXXXXXXXXXXXXXXXX
-007 XXXXXXXXXxXXXXXXX
-008 ..O......xxXXXXXX
-009 .........XXXX..XX
-010 .........XXXXXXXX
+007 XXXXXXXXXXXXXXXXX
+008 ..O.......xxXXXXX
+009 ............XXX..
+010 ............XXXXX
 011 ..............XX.
-012 ..............XX.
+012 .............XXX.
 013 .................
 014 .................
 Piece 2 2:
-.*
-.*
-<got (X): [7, 7]
+**
+..
+<got (X): [8, 9]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 XXXXXXXXXXXXXXXXX
+004 XXXXXXXXXXXXXXXXX
+005 XXXXXXXXXXXXXXXXX
+006 XXXXXXXXXXXXXXXXX
+007 XXXXXXXXXXXXXXXXX
+008 ..O......xxXXXXXX
+009 ............XXX..
+010 ............XXXXX
+011 ..............XX.
+012 .............XXX.
+013 .................
+014 .................
+Piece 2 1:
+*
+*
+<got (X): [7, 8]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
@@ -2228,35 +2192,14 @@ Plateau 15 17:
 006 XXXXXXXXXXXXXXXXX
 007 XXXXXXXXxXXXXXXXX
 008 ..O.....xXXXXXXXX
-009 .........XXXX..XX
-010 .........XXXXXXXX
+009 ............XXX..
+010 ............XXXXX
 011 ..............XX.
-012 ..............XX.
+012 .............XXX.
 013 .................
 014 .................
-Piece 2 2:
-**
-..
-<got (X): [8, 7]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 XXXXXXXXXXXXXXXXX
-005 XXXXXXXXXXXXXXXXX
-006 XXXXXXXXXXXXXXXXX
-007 XXXXXXXXXXXXXXXXX
-008 ..O....xxXXXXXXXX
-009 .........XXXX..XX
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 1 2:
-**
+Piece 1 3:
+***
 <got (X): [8, 6]
 Plateau 15 17:
     01234567890123456
@@ -2268,16 +2211,16 @@ Plateau 15 17:
 005 XXXXXXXXXXXXXXXXX
 006 XXXXXXXXXXXXXXXXX
 007 XXXXXXXXXXXXXXXXX
-008 ..O...xxXXXXXXXXX
-009 .........XXXX..XX
-010 .........XXXXXXXX
+008 ..O...xxxXXXXXXXX
+009 ............XXX..
+010 ............XXXXX
 011 ..............XX.
-012 ..............XX.
+012 .............XXX.
 013 .................
 014 .................
-Piece 2 2:
-**
-..
+Piece 2 3:
+**.
+...
 <got (X): [8, 5]
 Plateau 15 17:
     01234567890123456
@@ -2290,37 +2233,16 @@ Plateau 15 17:
 006 XXXXXXXXXXXXXXXXX
 007 XXXXXXXXXXXXXXXXX
 008 ..O..xxXXXXXXXXXX
-009 .........XXXX..XX
-010 .........XXXXXXXX
+009 ............XXX..
+010 ............XXXXX
 011 ..............XX.
-012 ..............XX.
+012 .............XXX.
 013 .................
 014 .................
-Piece 2 1:
-*
-*
-<got (X): [7, 4]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 XXXXXXXXXXXXXXXXX
-005 XXXXXXXXXXXXXXXXX
-006 XXXXXXXXXXXXXXXXX
-007 XXXXxXXXXXXXXXXXX
-008 ..O.xXXXXXXXXXXXX
-009 .........XXXX..XX
-010 .........XXXXXXXX
-011 ..............XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 2 3:
-***
-...
-<got (X): [9, 13]
+Piece 2 2:
+**
+..
+<got (X): [8, 4]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
@@ -2331,11 +2253,11 @@ Plateau 15 17:
 005 XXXXXXXXXXXXXXXXX
 006 XXXXXXXXXXXXXXXXX
 007 XXXXXXXXXXXXXXXXX
-008 ..O.XXXXXXXXXXXXX
-009 .........XXXXxxxX
-010 .........XXXXXXXX
+008 ..O.xxXXXXXXXXXXX
+009 ............XXX..
+010 ............XXXXX
 011 ..............XX.
-012 ..............XX.
+012 .............XXX.
 013 .................
 014 .................
 Piece 2 3:
@@ -2353,12 +2275,99 @@ Plateau 15 17:
 006 XXXXXXXXXXXXXXXXX
 007 XXXxXXXXXXXXXXXXX
 008 ..OxXXXXXXXXXXXXX
-009 .........XXXXXXXX
-010 .........XXXXXXXX
+009 ............XXX..
+010 ............XXXXX
 011 ..............XX.
-012 ..............XX.
+012 .............XXX.
 013 .................
 014 .................
+Piece 1 2:
+**
+<got (X): [9, 14]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 XXXXXXXXXXXXXXXXX
+004 XXXXXXXXXXXXXXXXX
+005 XXXXXXXXXXXXXXXXX
+006 XXXXXXXXXXXXXXXXX
+007 XXXXXXXXXXXXXXXXX
+008 ..OXXXXXXXXXXXXXX
+009 ............XXxx.
+010 ............XXXXX
+011 ..............XX.
+012 .............XXX.
+013 .................
+014 .................
+Piece 2 3:
+*..
+*..
+<got (X): [7, 1]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 XXXXXXXXXXXXXXXXX
+004 XXXXXXXXXXXXXXXXX
+005 XXXXXXXXXXXXXXXXX
+006 XXXXXXXXXXXXXXXXX
+007 XxXXXXXXXXXXXXXXX
+008 .xOXXXXXXXXXXXXXX
+009 ............XXXX.
+010 ............XXXXX
+011 ..............XX.
+012 .............XXX.
+013 .................
+014 .................
+Piece 2 2:
+.*
+.*
+<got (X): [8, 15]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 XXXXXXXXXXXXXXXXX
+004 XXXXXXXXXXXXXXXXX
+005 XXXXXXXXXXXXXXXXX
+006 XXXXXXXXXXXXXXXXX
+007 XXXXXXXXXXXXXXXXX
+008 .XOXXXXXXXXXXXXXx
+009 ............XXXXx
+010 ............XXXXX
+011 ..............XX.
+012 .............XXX.
+013 .................
+014 .................
+Piece 1 2:
+**
+<got (X): [8, 0]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 XXXXXXXXXXXXXXXXX
+004 XXXXXXXXXXXXXXXXX
+005 XXXXXXXXXXXXXXXXX
+006 XXXXXXXXXXXXXXXXX
+007 XXXXXXXXXXXXXXXXX
+008 xxOXXXXXXXXXXXXXX
+009 ............XXXXX
+010 ............XXXXX
+011 ..............XX.
+012 .............XXX.
+013 .................
+014 .................
+Piece 2 3:
+.**
+***
+Player with X: timedout
+
 Piece 2 1:
 *
 *
@@ -2534,21 +2543,21 @@ Plateau 15 17:
 000 XXXXXXXXXXXXXXXXX
 001 XXXXXXXXXXXXXXXXX
 002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
+003 XXXXXXXXXXXXXXX003 XXXXXXXXXXXXXXXXX
 004 XXXXXXXXXXXXXXXXX
 005 XXXXXXXXXXXXXXXXX
 006 XXXXXXXXXXXXXXXXX
 007 XXXXXXXXXXXXXXXXX
 008 XXOXXXXXXXXXXXXXX
-009 .XxxXXXXXXXXXXXXX
-010 ..xx...XXXXXXXXXX
-011 ..............XX.
-012 ..............XX.
+009 XXXXXXXXXXXXXXXXX
+010 .....xxxXXXXXXXXX
+011 ............XXXXX
+012 ..............X..
 013 .................
 014 .................
 Piece 1 3:
-.**
-<got (X): [10, 5]
+**.
+<got (X): [10, 4]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
@@ -2560,79 +2569,37 @@ Plateau 15 17:
 006 XXXXXXXXXXXXXXXXX
 007 XXXXXXXXXXXXXXXXX
 008 XXOXXXXXXXXXXXXXX
-009 .XXXXXXXXXXXXXXXX
-010 ..XX..xxXXXXXXXXX
-011 ..............XX.
-012 ..............XX.
+009 XXXXXXXXXXXXXXXXX
+010 ....xxXXXXXXXXXXX
+011 ............XXXXX
+012 ..............X..
 013 .................
 014 .................
 Piece 2 3:
-**.
+.**
+...
+<got (X): [10, 2]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 XXXXXXXXXXXXXXXXX
+004 XXXXXXXXXXXXXXXXX
+005 XXXXXXXXXXXXXXXXX
+006 XXXXXXXXXXXXXXXXX
+007 XXXXXXXXXXXXXXXXX
+008 XXOXXXXXXXXXXXXXX
+009 XXXXXXXXXXXXXXXXX
+010 ...xxXXXXXXXXXXXX
+011 ............XXXXX
+012 ..............X..
+013 .................
+014 .................
+Piece 2 3:
 ***
-<got (X): [10, 5]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 XXXXXXXXXXXXXXXXX
-005 XXXXXXXXXXXXXXXXX
-006 XXXXXXXXXXXXXXXXX
-007 XXXXXXXXXXXXXXXXX
-008 XXOXXXXXXXXXXXXXX
-009 .XXXXXXXXXXXXXXXX
-010 ..XX.xxXXXXXXXXXX
-011 .....xxx......XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 2 3:
 **.
-...
-<got (X): [9, 0]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 XXXXXXXXXXXXXXXXX
-005 XXXXXXXXXXXXXXXXX
-006 XXXXXXXXXXXXXXXXX
-007 XXXXXXXXXXXXXXXXX
-008 XXOXXXXXXXXXXXXXX
-009 xxXXXXXXXXXXXXXXX
-010 ..XX.XXXXXXXXXXXX
-011 .....XXX......XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 2 3:
-.*.
-**.
-<got (X): [9, 0]
-Plateau 15 17:
-    01234567890123456
-000 XXXXXXXXXXXXXXXXX
-001 XXXXXXXXXXXXXXXXX
-002 XXXXXXXXXXXXXXXXX
-003 XXXXXXXXXXXXXXXXX
-004 XXXXXXXXXXXXXXXXX
-005 XXXXXXXXXXXXXXXXX
-006 XXXXXXXXXXXXXXXXX
-007 XXXXXXXXXXXXXXXXX
-008 XXOXXXXXXXXXXXXXX
-009 XxXXXXXXXXXXXXXXX
-010 xxXX.XXXXXXXXXXXX
-011 .....XXX......XX.
-012 ..............XX.
-013 .................
-014 .................
-Piece 2 3:
-..*
-.**
-<got (X): [10, 11]
+<got (X): [10, 1]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
@@ -2645,15 +2612,35 @@ Plateau 15 17:
 007 XXXXXXXXXXXXXXXXX
 008 XXOXXXXXXXXXXXXXX
 009 XXXXXXXXXXXXXXXXX
-010 XXXX.XXXXXXXXxXXX
-011 .....XXX....xxXX.
-012 ..............XX.
+010 .xxxXXXXXXXXXXXXX
+011 .xx.........XXXXX
+012 ..............X..
 013 .................
 014 .................
-Piece 2 3:
-.**
-...
-<got (X): [10, 3]
+Piece 2 1:
+*
+*
+<got (X): [9, 0]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 XXXXXXXXXXXXXXXXX
+004 XXXXXXXXXXXXXXXXX
+005 XXXXXXXXXXXXXXXXX
+006 XXXXXXXXXXXXXXXXX
+007 XXXXXXXXXXXXXXXXX
+008 XXOXXXXXXXXXXXXXX
+009 xXXXXXXXXXXXXXXXX
+010 xXXXXXXXXXXXXXXXX
+011 .XX.........XXXXX
+012 ..............X..
+013 .................
+014 .................
+Piece 1 2:
+**
+<got (X): [11, 11]
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
@@ -2666,15 +2653,35 @@ Plateau 15 17:
 007 XXXXXXXXXXXXXXXXX
 008 XXOXXXXXXXXXXXXXX
 009 XXXXXXXXXXXXXXXXX
-010 XXXXxxXXXXXXXXXXX
-011 .....XXX....XXXX.
-012 ..............XX.
+010 XXXXXXXXXXXXXXXXX
+011 .XX........xxXXXX
+012 ..............X..
+013 .................
+014 .................
+Piece 1 2:
+**
+<got (X): [11, 10]
+Plateau 15 17:
+    01234567890123456
+000 XXXXXXXXXXXXXXXXX
+001 XXXXXXXXXXXXXXXXX
+002 XXXXXXXXXXXXXXXXX
+003 XXXXXXXXXXXXXXXXX
+004 XXXXXXXXXXXXXXXXX
+005 XXXXXXXXXXXXXXXXX
+006 XXXXXXXXXXXXXXXXX
+007 XXXXXXXXXXXXXXXXX
+008 XXOXXXXXXXXXXXXXX
+009 XXXXXXXXXXXXXXXXX
+010 XXXXXXXXXXXXXXXXX
+011 .XX.......xxXXXXX
+012 ..............X..
 013 .................
 014 .................
 Piece 1 3:
-.**
-<got (X): [11, 14]
-Plateau 15 17:
+***
+Player with X: timedout
+7:
     01234567890123456
 000 XXXXXXXXXXXXXXXXX
 001 XXXXXXXXXXXXXXXXX

@@ -27,8 +27,6 @@ typedef	struct	s_params
   int y_figure;
   char **board;
   char **figure;
-  int x_diff;
-  int y_diff;
 }				t_params;
 
 t_params params;
@@ -52,6 +50,7 @@ char		**ft_strsplit(char const *s, char c);
 int			ft_atoi(const char *str);
 char	**two_dim_arr_mem(char **field, int x, int y, char c);
 size_t		ft_strlen(const char *s);
+void	ft_strdel(char **as);
 
 void	coordinatemin(t_coordinate *c, int size);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
