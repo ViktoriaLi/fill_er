@@ -1,27 +1,95 @@
-
 #include "filler.h"
 
-/*void	list_push_back(t_list **begin_list, t_coordinate *c)
+/*int		check_in_field(int i, int j, int k, int l)
 {
-	t_list	*list;
-	t_list	*oneelem;
+  int my;
+	int opos;
+  int x_finish;
+  int y_finish;
+	int a;
+	int b;
 
-	coordinatemin(c);
-	list = *begin_list;
-	oneelem = ft_lstnew(c, sizeof(t_coordinate) * 4);
-	if (!list)
+  my = 0;
+	opos = 0;
+	a = 0;
+	b = 0;
+  x_finish = i;
+  y_finish = j;
+	while (a < params.x_figure && i < params.x_board)
 	{
-		*begin_list = oneelem;
-		return ;
+		while (b < params.y_figure && j < params.y_board)
+		{
+			if (params.figure[k][l] == '*')
+			{
+				if (params.board[i][j] == params.player_number || params.board[i][j] == params.player_number + 32)
+					my++;
+				if (params.board[i][j] == params.oppos_number || params.board[i][j] == params.oppos_number + 32)
+					opos++;
+			}
+			if (my > 1 || opos > 0)
+				return (0);
+			b++;
+			j++;
+		}
+		if (b != params.y_figure)
+			return (0);
+		a++;
+		i++;
 	}
-	while (list->next)
-		list = list->next;
-	list->next = oneelem;
+	if (a != params.x_figure)
+		return (0);
+	if (a == params.x_figure && b == params.y_figure && my == 1 && opos == 0)
+		{
+			ft_printf("%d %d\n", x_finish, y_finish);
+	    return (1);
+		}
+	else
+		return (0);
+}
+
+void save_coord()
+{
+  int i;
+  int j;
+	int k;
+  int l;
+
+  i = 0;
+  j = 0;
+	k = 0;
+	l = 0;
+  while (k < params.x_figure)
+  {
+    l = 0;
+    while (l < params.y_figure)
+    {
+      if (params.figure[k][l] == '*')
+        break;
+      l++;
+    }
+		if (l != params.y_figure)
+			break;
+    k++;
+  }
+  while (i < params.x_board)
+	{
+    j = 0;
+    while (j < params.y_board)
+    {
+      if (check_in_field(i, j, k, l) == 1)
+          break;
+      j++;
+    }
+    if (j != params.y_board)
+      break;
+    i++;
+	}
 }*/
 
 int		check_in_field(int i, int j, int k, int l, int count)
 {
-  //ft_printf("%d %d %d %d %d\n", i, j, k, l, count);
+//ft_printf("FIRST%d %d %d %d %d\n", i, j, k, l, count);
+  int jj;
   int my;
 	int opos;
   int x_finish;
@@ -32,23 +100,18 @@ int		check_in_field(int i, int j, int k, int l, int count)
   y_finish = j;
   int tmp;
   tmp = 0;
-  int a;
-
-  a = 0;
-
+  jj = j;
 	while (k < params.x_figure && i < params.x_board && tmp < count)
 	{
-    if (a != 0)
-    {
+      j = jj;
       l = 0;
-      j = 0;
-    }
 		while (l < params.y_figure && j < params.y_board && tmp < count)
 		{
 			if (params.figure[k][l] == '*')
 			{
-        //ft_printf("!!!  %d %d %d %d %d\n", i, j, k, l, count);
-        //ft_printf("???  %c", params.board[i][j]);
+        //ft_printf("!!!  %d %d %d %d %d\n", i, j, k, l, tmp);
+        //ft_printf("%c", params.board[i][j]);
+        //ft_printf("%c", params.figure[k][l]);
 				if (params.board[i][j] == params.player_number || params.board[i][j] == params.player_number + 32)
 					my++;
 				if (params.board[i][j] == params.oppos_number || params.board[i][j] == params.oppos_number + 32)
@@ -57,12 +120,12 @@ int		check_in_field(int i, int j, int k, int l, int count)
 			}
       l++;
 			j++;
+      //ft_printf("333 %d %d %d %d %d\n", my, opos, k, l, tmp);
 		}
     k++;
 		i++;
-    a++;
 	}
-  //ft_printf("%d %d\n", my, opos, k, l, count);
+
 	if (tmp == count && my == 1 && opos == 0)
 		{
 			ft_printf("%d %d\n", x_finish, y_finish);
@@ -70,37 +133,6 @@ int		check_in_field(int i, int j, int k, int l, int count)
 		}
 	else
 		return (0);
-	/*while (k < size)
-	{
-		if (i + c[k].x < params.x_board && j +
-		c[k].y < params.y_board)
-    {
-      if (params.board[i + c[k].x][j +
-  		 c[k].y] == params.player_number || params.board[i + c[k].x][j +
-   		 c[k].y] == params.player_number + 32)
-        my++;
-      if (params.board[i + c[k].x][j +
-    	 c[k].y] == params.oppos_number || params.board[i + c[k].x][j +
-     	 c[k].y] == params.oppos_number + 32)
-        opos++;
-      if (k < size && (i + c[k].x >= params.x_board || j +
-      	c[k].y >= params.y_board))
-      	return (0);
-    }
-			k++;
-	}
-  if (my == 1 && opos == 0)
-  {
-    if (params.x_diff != -1)
-      x_finish += params.x_diff;
-    if (params.y_diff != -1)
-      x_finish += params.y_diff ;
-    ft_printf("%d %d\n", x_finish, y_finish);
-    return (1);
-  }
-  else
-   return (0);*/
-
 }
 
 void save_coord()
@@ -161,6 +193,7 @@ int main(void)
 {
   int i;
   int j;
+	int count;
   int k;
   int fd;
   int fd1;
@@ -170,6 +203,7 @@ int main(void)
   i = 0;
   j = 0;
   k = 0;
+	count = 0;
 
   //fd = open("test1", O_RDONLY);
   fd1 = open("res", O_WRONLY);
@@ -184,14 +218,15 @@ int main(void)
     i = 0;
 		if (get_next_line(fd, &buf) < 1)
 			break;
-    /*write(fd1, "1", 1);
+    write(fd1, "1", 1);
     write(fd1, buf, ft_strlen(buf));
-    write(fd1, "\n", 1);*/
+    write(fd1, "\n", 1);
 		//ft_printf("BUF%s\n", buf);
-		if (ft_strstr(buf, "p2") && ft_strstr(buf, "vlikhotk"))
+		if (count == 1 && ft_strstr(buf, "vlikhotk"))
 		{
 			params.player_number = 'X';
 			params.oppos_number = 'O';
+      count++;
       continue ;
 		}
 		if (ft_strstr(buf, "Plateau"))
@@ -209,22 +244,22 @@ int main(void)
 			while (i < params.x_board)
 				params.board[i++] = (char *)malloc(params.y_board);
 			get_next_line(fd, &buf);
-      /*write(fd1, "2", 1);
+      write(fd1, "2", 1);
       write(fd1, buf, ft_strlen(buf));
-      write(fd1, "\n", 1);*/
+      write(fd1, "\n", 1);
       //ft_printf("EMPTY line%s\n", buf);
 			ft_strdel(&buf);
       //ft_printf("DDD%d\n", params.x_board);
 			i = 0;
 		  while (i < params.x_board)
 			{
-        //write(fd1, "test", 4);
+        write(fd1, "test", 4);
 				j = 0;
 		    k = 4;
 		    get_next_line(fd, &buf);
-        /*write(fd1, "3", 1);
+        write(fd1, "3", 1);
         write(fd1, buf, ft_strlen(buf));
-        write(fd1, "\n", 1);*/
+        write(fd1, "\n", 1);
 		    while (k < params.y_board + 4)
 		    {
 		      params.board[i][j] = buf[k];
@@ -235,6 +270,7 @@ int main(void)
 		    ft_strdel(&buf);
 				i++;
 			}
+      count++;
       continue ;
 		}
     //ft_printf("BOARD%s\n", "test");
@@ -259,9 +295,9 @@ int main(void)
 		  {
 				j = 0;
 		    get_next_line(fd, &buf);
-        /*write(fd1, "4", 1);
+        write(fd1, "4", 1);
         write(fd1, buf, ft_strlen(buf));
-        write(fd1, "\n", 1);*/
+        write(fd1, "\n", 1);
 		    while (j < params.y_figure)
 		    {
 		      params.figure[i][j] = buf[j];
@@ -276,14 +312,13 @@ int main(void)
 			i = 0;
 			 while (i < params.x_figure)
         ft_strdel(&params.figure[i++]);
-        free(params.figure);
         i = 0;
   			while (i < params.x_board)
         ft_strdel(&params.board[i++]);
-        free(params.board);
 			 //free(buf);
 		}
     //ft_printf("BOARD%s\n", "test");
+		count++;
 	}
   //ft_printf("%d %d", 8, 2);
 }
