@@ -54,5 +54,6 @@ void	ft_strdel(char **as);
 
 void	coordinatemin(t_coordinate *c, int size);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
+char			*ft_itoa(int n);
 
 #endif

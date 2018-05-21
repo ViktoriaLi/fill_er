@@ -32,8 +32,8 @@ int		check_in_field(int i, int j, int k, int l)
 	opos = 0;
 	a = 0;
 	b = 0;
-  x_finish = i + k;
-  y_finish = j + l;
+  x_finish = i;
+  y_finish = j;
 	while (a < params.x_figure && i < params.x_board)
 	{
 		while (b < params.y_figure && j < params.y_board)
@@ -155,14 +155,18 @@ int main(void)
   int fd;
   int fd1;
   char *buf;
+  char *tmp;
   //t_list	*list;
   i = 0;
   j = 0;
   k = 0;
 	count = 0;
-  fd = open("test1", O_RDONLY);
+
+  //fd = open("test1", O_RDONLY);
   fd1 = open("res", O_WRONLY);
-  //fd = 0;
+  fd = 0;
+  buf = NULL;
+  tmp = NULL;
 	params.player_number = 'O';
   params.oppos_number = 'X';
   struct_initiation();
@@ -171,6 +175,9 @@ int main(void)
     i = 0;
 		if (get_next_line(fd, &buf) < 1)
 			break;
+    write(fd1, "1", 1);
+    write(fd1, buf, ft_strlen(buf));
+    write(fd1, "\n", 1);
 		//ft_printf("BUF%s\n", buf);
 		if (count == 1 && ft_strstr(buf, "vlikhotk"))
 		{
@@ -179,38 +186,37 @@ int main(void)
       count++;
       continue ;
 		}
-		//ft_printf("SYMB%c %c\n", params.player_number, params.oppos_number);
-		if (count == 2)
+		if (ft_strstr(buf, "Plateau"))
 		{
-			i = 0;
+      i = 0;
 			while (buf[i] != ' ')
 				i++;
 			params.x_board = ft_atoi(&buf[++i]);
 			while (buf[i] != ' ')
 				i++;
 			params.y_board = ft_atoi(&buf[++i]);
-			//ft_printf("SIZE board%d %d\n", params.x_board, params.y_board);
-			params.board = (char **)malloc(sizeof(char *) * params.x_board);
+      //tmp = ft_itoa(params.x_board);
+      params.board = (char **)malloc(sizeof(char *) * params.x_board);
 			i = 0;
 			while (i < params.x_board)
-			{
-				params.board[i] = (char *)malloc(params.y_board + 1);
-        params.board[i][params.y_board] = 0;
-				i++;
-			}
-		}
-		if (ft_strstr(buf, "Plateau"))
-		{
+				params.board[i++] = (char *)malloc(params.y_board);
 			get_next_line(fd, &buf);
+      write(fd1, "2", 1);
+      write(fd1, buf, ft_strlen(buf));
+      write(fd1, "\n", 1);
       //ft_printf("EMPTY line%s\n", buf);
 			ft_strdel(&buf);
       //ft_printf("DDD%d\n", params.x_board);
 			i = 0;
 		  while (i < params.x_board)
 			{
+        write(fd1, "test", 4);
 				j = 0;
 		    k = 4;
 		    get_next_line(fd, &buf);
+        write(fd1, "3", 1);
+        write(fd1, buf, ft_strlen(buf));
+        write(fd1, "\n", 1);
 		    while (k < params.y_board + 4)
 		    {
 		      params.board[i][j] = buf[k];
@@ -239,17 +245,16 @@ int main(void)
 		  params.figure = (char **)malloc(sizeof(char *) * params.x_figure);
 		  i = 0;
 			while (i < params.x_figure)
-		 	{
-			 	params.figure[i] = (char *)malloc(params.y_figure + 1);
-        params.figure[i][params.y_figure] = 0;
-			 	i++;
-		 	}
+			 	params.figure[i++] = (char *)malloc(params.y_figure);
 			ft_strdel(&buf);
 			i = 0;
 		  while (i < params.x_figure)
 		  {
 				j = 0;
 		    get_next_line(fd, &buf);
+        write(fd1, "4", 1);
+        write(fd1, buf, ft_strlen(buf));
+        write(fd1, "\n", 1);
 		    while (j < params.y_figure)
 		    {
 		      params.figure[i][j] = buf[j];
@@ -264,8 +269,9 @@ int main(void)
 			i = 0;
 			 while (i < params.x_figure)
         ft_strdel(&params.figure[i++]);
-      count++;
-      continue ;
+        i = 0;
+  			while (i < params.x_board)
+        ft_strdel(&params.board[i++]);
 			 //free(buf);
 		}
     //ft_printf("BOARD%s\n", "test");
