@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 void	swap_and_join(char **tmp, char *buf)
 {
@@ -119,10 +120,10 @@ int		get_next_line(const int fd, char **line)
 	*line = NULL;
 	if (all_fd[fd])
 	{
+		// printf("ok4\n");
 		if_next(line, &tmp, &all_fd[fd], res);
-		write(fd2, "ok\n", 3);
-		write(fd2, line, ft_strlen(*line));
 	}
+	// printf("ok\n");
 
 	if (*line)
 		return (1);
@@ -132,9 +133,22 @@ int		get_next_line(const int fd, char **line)
 		*line = tmp;
 		return (1);
 	}
+	// printf("ok1\n");
 	return (res);
 }
 
+int main()
+{
+	char *line;
+	line =NULL;
+	int fd = open("1", O_RDONLY);
+	while (get_next_line(0, &line))
+	{
+		printf("%s\n", line);
+		ft_strdel(&line);
+	}
+	return (0);
+}
 /*#include "get_next_line.h"
 #include <fcntl.h>
 

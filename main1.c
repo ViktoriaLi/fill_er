@@ -94,11 +94,12 @@ int		check_in_field(int i, int j, int k, int l, int count)
 	int opos;
   int x_finish;
   int y_finish;
+  int tmp;
+
   my = 0;
 	opos = 0;
   x_finish = i;
   y_finish = j;
-  int tmp;
   tmp = 0;
   jj = j;
 	while (k < params.x_figure && i < params.x_board && tmp < count)
@@ -126,7 +127,7 @@ int		check_in_field(int i, int j, int k, int l, int count)
 		i++;
 	}
 
-	if (tmp == count && my == 1 && opos == 0)
+	if (/*tmp == count &&*/ my == 1 && opos == 0)
 		{
 			ft_printf("%d %d\n", x_finish, y_finish);
 	    return (1);
@@ -142,23 +143,32 @@ void save_coord()
 	int k;
   int l;
   int count;
-
+  /*int x_min;
+  int x_max;
+  int y_min;
+  int y_max;*/
   i = 0;
   j = 0;
 	k = 0;
 	l = 0;
   count = 0;
+  /*x_min = 0;
+  y_min = 0;
+  x_max = 0;
+  y_max = 0;*/
   while (i < params.x_figure)
   {
     j = 0;
     while (j < params.y_figure)
     {
       if (params.figure[i][j] == '*')
-        count++;
-      if (count == 1)
       {
-        k = i;
-        l = j;
+        count++;
+        if (count == 1)
+        {
+          k = i;
+          l = j;
+        }
       }
       j++;
     }
@@ -171,7 +181,7 @@ void save_coord()
     j = 0;
     while (j < params.y_board)
     {
-      if (check_in_field(i, j, k, l, count) == 1)
+      if (check_in_field(i, j, 0, 0, count) == 1)
           return ;
       j++;
     }
@@ -193,7 +203,6 @@ int main(void)
 {
   int i;
   int j;
-	int count;
   int k;
   int fd;
   int fd1;
@@ -203,7 +212,6 @@ int main(void)
   i = 0;
   j = 0;
   k = 0;
-	count = 0;
 
   //fd = open("test1", O_RDONLY);
   fd1 = open("res", O_WRONLY);
@@ -216,19 +224,23 @@ int main(void)
 	while (1)
 	{
     i = 0;
+    //ft_strdel(&buf);
 		if (get_next_line(fd, &buf) < 1)
-			break;
-    write(fd1, "1", 1);
+    {
+      write(fd1, "ok\n", 3);
+			break ;
+    }
+    // write(fd1, "1", 1);
     write(fd1, buf, ft_strlen(buf));
     write(fd1, "\n", 1);
 		//ft_printf("BUF%s\n", buf);
-		if (count == 1 && ft_strstr(buf, "vlikhotk"))
-		{
-			params.player_number = 'X';
-			params.oppos_number = 'O';
-      count++;
-      continue ;
-		}
+		// if (ft_strstr(buf, "p2") && ft_strstr(buf, "vlikhotk"))
+		// {
+		// 	params.player_number = 'X';
+		// 	params.oppos_number = 'O';
+     // ft_strdel(&buf);
+    //   continue ;
+		// }
 		if (ft_strstr(buf, "Plateau"))
 		{
       i = 0;
@@ -238,26 +250,28 @@ int main(void)
 			while (buf[i] != ' ')
 				i++;
 			params.y_board = ft_atoi(&buf[++i]);
+      ft_strdel(&buf);
       //tmp = ft_itoa(params.x_board);
       params.board = (char **)malloc(sizeof(char *) * params.x_board);
 			i = 0;
 			while (i < params.x_board)
 				params.board[i++] = (char *)malloc(params.y_board);
 			get_next_line(fd, &buf);
-      write(fd1, "2", 1);
+      // write(fd1, "2", 1);
       write(fd1, buf, ft_strlen(buf));
       write(fd1, "\n", 1);
       //ft_printf("EMPTY line%s\n", buf);
 			ft_strdel(&buf);
       //ft_printf("DDD%d\n", params.x_board);
 			i = 0;
+    // }
 		  while (i < params.x_board)
 			{
-        write(fd1, "test", 4);
+        //write(fd1, "test", 4);
 				j = 0;
 		    k = 4;
 		    get_next_line(fd, &buf);
-        write(fd1, "3", 1);
+        // write(fd1, "3", 1);
         write(fd1, buf, ft_strlen(buf));
         write(fd1, "\n", 1);
 		    while (k < params.y_board + 4)
@@ -267,10 +281,9 @@ int main(void)
 		      j++;
 		    }
 				//ft_printf("BOARD%s\n", params.board[i]);
-		    ft_strdel(&buf);
 				i++;
+        ft_strdel(&buf);
 			}
-      count++;
       continue ;
 		}
     //ft_printf("BOARD%s\n", "test");
@@ -284,18 +297,19 @@ int main(void)
 		  while (buf[i] != ' ')
 		    i++;
 		  params.y_figure = ft_atoi(&buf[++i]);
+      ft_strdel(&buf);
 			//ft_printf("FIG size%d %d\n", params.x_figure, params.y_figure);
 		  params.figure = (char **)malloc(sizeof(char *) * params.x_figure);
 		  i = 0;
 			while (i < params.x_figure)
 			 	params.figure[i++] = (char *)malloc(params.y_figure);
-			ft_strdel(&buf);
+
 			i = 0;
 		  while (i < params.x_figure)
 		  {
 				j = 0;
 		    get_next_line(fd, &buf);
-        write(fd1, "4", 1);
+        //write(fd1, "4", 1);
         write(fd1, buf, ft_strlen(buf));
         write(fd1, "\n", 1);
 		    while (j < params.y_figure)
@@ -312,13 +326,15 @@ int main(void)
 			i = 0;
 			 while (i < params.x_figure)
         ft_strdel(&params.figure[i++]);
+      free(params.figure);
         i = 0;
   			while (i < params.x_board)
         ft_strdel(&params.board[i++]);
+      free(params.board);
 			 //free(buf);
 		}
+    ft_strdel(&buf);
     //ft_printf("BOARD%s\n", "test");
-		count++;
 	}
   //ft_printf("%d %d", 8, 2);
 }

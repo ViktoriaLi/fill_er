@@ -1,4 +1,5 @@
-seed = 3320
+seed = 1706
+resources/players/vlikhotk.filler: Segfault at 1
 resources/players/grati.filler won
 Score:
-1AGAINST165
+1AGAINST161
