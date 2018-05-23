@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-/*void	swap_and_join(char **tmp, char *buf)
+void	swap_and_join(char **tmp, char *buf)
 {
 	char *swap;
 
@@ -135,9 +135,9 @@ int		get_next_line(const int fd, char **line)
 		return (1);
 	}
 	return (res);
-}*/
+}
 
-#include "get_next_line.h"
+/*#include "get_next_line.h"
 
 char	*ft_realoc(char *save, int i, char *line)
 {
@@ -259,4 +259,4 @@ int		get_next_line(int fd, char **line)
 	*line = buf;
 	s->content = ft_re_save((char*)(s->content), i);
 	return (1);
-}
+}*/

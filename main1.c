@@ -127,6 +127,7 @@ void struct_initiation()
   params.y_board = 0;
   params.x_figure = 0;
   params.y_figure = 0;
+  params.diff = 0;
   params.board = NULL;
   params.figure = NULL;
 }
@@ -137,32 +138,21 @@ int main(void)
   int j;
   int k;
   int fd;
-  int fd1;
   char *buf;
-  char *tmp;
-  //t_list	*list;
+
   i = 0;
   j = 0;
   k = 0;
-
-  //fd = open("test1", O_RDONLY);
-  fd1 = open("res", O_WRONLY);
   fd = 0;
   buf = NULL;
-  tmp = NULL;
 	params.player_number = 'O';
   params.oppos_number = 'X';
   struct_initiation();
 	while (1)
 	{
     i = 0;
-    //ft_strdel(&buf);
 		if (get_next_line(fd, &buf) < 1)
 			break ;
-    // write(fd1, "1", 1);
-    /*write(fd1, buf, ft_strlen(buf));
-    write(fd1, "\n", 1);*/
-		//ft_printf("BUF%s\n", buf);
 		if (ft_strstr(buf, "p2") && ft_strstr(buf, "vlikhotk"))
 		{
 		    params.player_number = 'X';
@@ -180,36 +170,28 @@ int main(void)
 				i++;
 			params.y_board = ft_atoi(&buf[++i]);
       ft_strdel(&buf);
-      //tmp = ft_itoa(params.x_board);
       params.board = (char **)malloc(sizeof(char *) * params.x_board);
 			i = 0;
+      if (params.x_board <= 100)
+          params.diff = 4;
+      else
+          params.diff = 5;
 			while (i < params.x_board)
 				params.board[i++] = (char *)malloc(params.y_board);
 			get_next_line(fd, &buf);
-      // write(fd1, "2", 1);
-      /*write(fd1, buf, ft_strlen(buf));
-      write(fd1, "\n", 1);*/
-      //ft_printf("EMPTY line%s\n", buf);
 			ft_strdel(&buf);
-      //ft_printf("DDD%d\n", params.x_board);
 			i = 0;
-    // }
 		  while (i < params.x_board)
 			{
-        //write(fd1, "test", 4);
 				j = 0;
-		    k = 4;
+	      k = params.diff;
 		    get_next_line(fd, &buf);
-        // write(fd1, "3", 1);
-        /*write(fd1, buf, ft_strlen(buf));
-        write(fd1, "\n", 1);*/
-		    while (k < params.y_board + 4)
+		    while (k < params.y_board + params.diff)
 		    {
 		      params.board[i][j] = buf[k];
 		      k++;
 		      j++;
 		    }
-				//ft_printf("BOARD%s\n", params.board[i]);
 				i++;
         ft_strdel(&buf);
 			}
@@ -237,9 +219,6 @@ int main(void)
 		  {
 				j = 0;
 		    get_next_line(fd, &buf);
-        //write(fd1, "4", 1);
-        /*write(fd1, buf, ft_strlen(buf));
-        write(fd1, "\n", 1);*/
 		    while (j < params.y_figure)
 		    {
 		      params.figure[i][j] = buf[j];
@@ -250,7 +229,10 @@ int main(void)
 		    ft_strdel(&buf);
 		  }
       if (save_coord() == -1)
+      {
+        ft_printf("%d %d\n", 0, 0);
         return (0);
+      }
 			//ft_printf("%d %d", 8, 2);
 			i = 0;
 			 while (i < params.x_figure)

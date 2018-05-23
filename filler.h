@@ -25,17 +25,12 @@ typedef	struct	s_params
   int y_board;
   int x_figure;
   int y_figure;
+  int diff;
   char **board;
   char **figure;
 }				t_params;
 
 t_params params;
-
-typedef	struct	s_list
-{
-	void			*content;
-	struct s_list	*next;
-}				t_list;
 
 typedef struct	s_coordinate
 {
@@ -55,7 +50,6 @@ char	**two_dim_arr_mem(char **field, int x, int y, char c);
 size_t		ft_strlen(const char *s);
 void	ft_strdel(char **as);
 
-void	coordinatemin(t_coordinate *c, int size);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_itoa(int n);
 
