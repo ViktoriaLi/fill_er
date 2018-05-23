@@ -30,8 +30,6 @@ typedef	struct	s_params
   char **figure;
 }				t_params;
 
-t_params params;
-
 typedef struct	s_coordinate
 {
 	int x;
@@ -46,9 +44,10 @@ int		ft_printf(const char *format, ...);
 char	*ft_strstr(const char *big, const char *little);
 char		**ft_strsplit(char const *s, char c);
 int			ft_atoi(const char *str);
-char	**two_dim_arr_mem(char **field, int x, int y, char c);
 size_t		ft_strlen(const char *s);
 void	ft_strdel(char **as);
+char	**two_dim_arr_mem(char **field, int x, int y, char c);
+char	*ft_strcpy(char *dst, const char *src);
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_itoa(int n);
