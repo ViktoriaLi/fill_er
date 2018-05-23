@@ -41,7 +41,10 @@ typedef struct	s_coordinate
 {
 	int x;
 	int y;
+  struct s_coordinate	*next;
 }				t_coordinate;
+
+t_coordinate *coords;
 
 int		get_next_line(const int fd, char **line);
 int		ft_printf(const char *format, ...);

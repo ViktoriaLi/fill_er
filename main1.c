@@ -1,90 +1,27 @@
 #include "filler.h"
 
-/*int		check_in_field(int i, int j, int k, int l)
+void	coord_push_back(int x, int y)
 {
-  int my;
-	int opos;
-  int x_finish;
-  int y_finish;
-	int a;
-	int b;
+	int i;
+	t_coordinate	*list;
+	t_coordinate	*oneelem;
 
-  my = 0;
-	opos = 0;
-	a = 0;
-	b = 0;
-  x_finish = i;
-  y_finish = j;
-	while (a < params.x_figure && i < params.x_board)
+	i = 0;
+	oneelem = NULL;
+	if (!(oneelem = (t_coordinate *)malloc(sizeof(t_coordinate))))
+		return ;
+	list = coords;
+  coords->x = x;
+  coords->y = y;
+	if (!list)
 	{
-		while (b < params.y_figure && j < params.y_board)
-		{
-			if (params.figure[k][l] == '*')
-			{
-				if (params.board[i][j] == params.player_number || params.board[i][j] == params.player_number + 32)
-					my++;
-				if (params.board[i][j] == params.oppos_number || params.board[i][j] == params.oppos_number + 32)
-					opos++;
-			}
-			if (my > 1 || opos > 0)
-				return (0);
-			b++;
-			j++;
-		}
-		if (b != params.y_figure)
-			return (0);
-		a++;
-		i++;
+		coords = oneelem;
+		return ;
 	}
-	if (a != params.x_figure)
-		return (0);
-	if (a == params.x_figure && b == params.y_figure && my == 1 && opos == 0)
-		{
-			ft_printf("%d %d\n", x_finish, y_finish);
-	    return (1);
-		}
-	else
-		return (0);
+	while (list->next)
+		list = list->next;
+	list->next = oneelem;
 }
-
-void save_coord()
-{
-  int i;
-  int j;
-	int k;
-  int l;
-
-  i = 0;
-  j = 0;
-	k = 0;
-	l = 0;
-  while (k < params.x_figure)
-  {
-    l = 0;
-    while (l < params.y_figure)
-    {
-      if (params.figure[k][l] == '*')
-        break;
-      l++;
-    }
-		if (l != params.y_figure)
-			break;
-    k++;
-  }
-  while (i < params.x_board)
-	{
-    j = 0;
-    while (j < params.y_board)
-    {
-      if (check_in_field(i, j, k, l) == 1)
-          break;
-      j++;
-    }
-    if (j != params.y_board)
-      break;
-    i++;
-	}
-}*/
 
 int		check_in_field(int i, int j, int k, int l, int count)
 {
@@ -127,8 +64,9 @@ int		check_in_field(int i, int j, int k, int l, int count)
 		i++;
 	}
 
-	if (/*tmp == count &&*/ my == 1 && opos == 0)
+	if (tmp == count && my == 1 && opos == 0)
 		{
+      //coord_push_back();
 			ft_printf("%d %d\n", x_finish, y_finish);
 	    return (1);
 		}
@@ -136,26 +74,18 @@ int		check_in_field(int i, int j, int k, int l, int count)
 		return (0);
 }
 
-void save_coord()
+int save_coord()
 {
   int i;
   int j;
 	int k;
   int l;
   int count;
-  /*int x_min;
-  int x_max;
-  int y_min;
-  int y_max;*/
   i = 0;
   j = 0;
 	k = 0;
 	l = 0;
   count = 0;
-  /*x_min = 0;
-  y_min = 0;
-  x_max = 0;
-  y_max = 0;*/
   while (i < params.x_figure)
   {
     j = 0;
@@ -181,12 +111,14 @@ void save_coord()
     j = 0;
     while (j < params.y_board)
     {
+      //check_in_field(i, j, 0, 0, count);
       if (check_in_field(i, j, 0, 0, count) == 1)
-          return ;
+          return (1);
       j++;
     }
     i++;
 	}
+  return (-1);
 }
 
 void struct_initiation()
@@ -226,21 +158,18 @@ int main(void)
     i = 0;
     //ft_strdel(&buf);
 		if (get_next_line(fd, &buf) < 1)
-    {
-      write(fd1, "ok\n", 3);
 			break ;
-    }
     // write(fd1, "1", 1);
-    write(fd1, buf, ft_strlen(buf));
-    write(fd1, "\n", 1);
+    /*write(fd1, buf, ft_strlen(buf));
+    write(fd1, "\n", 1);*/
 		//ft_printf("BUF%s\n", buf);
-		// if (ft_strstr(buf, "p2") && ft_strstr(buf, "vlikhotk"))
-		// {
-		// 	params.player_number = 'X';
-		// 	params.oppos_number = 'O';
-     // ft_strdel(&buf);
-    //   continue ;
-		// }
+		if (ft_strstr(buf, "p2") && ft_strstr(buf, "vlikhotk"))
+		{
+		    params.player_number = 'X';
+		    params.oppos_number = 'O';
+        ft_strdel(&buf);
+        continue ;
+		}
 		if (ft_strstr(buf, "Plateau"))
 		{
       i = 0;
@@ -258,8 +187,8 @@ int main(void)
 				params.board[i++] = (char *)malloc(params.y_board);
 			get_next_line(fd, &buf);
       // write(fd1, "2", 1);
-      write(fd1, buf, ft_strlen(buf));
-      write(fd1, "\n", 1);
+      /*write(fd1, buf, ft_strlen(buf));
+      write(fd1, "\n", 1);*/
       //ft_printf("EMPTY line%s\n", buf);
 			ft_strdel(&buf);
       //ft_printf("DDD%d\n", params.x_board);
@@ -272,8 +201,8 @@ int main(void)
 		    k = 4;
 		    get_next_line(fd, &buf);
         // write(fd1, "3", 1);
-        write(fd1, buf, ft_strlen(buf));
-        write(fd1, "\n", 1);
+        /*write(fd1, buf, ft_strlen(buf));
+        write(fd1, "\n", 1);*/
 		    while (k < params.y_board + 4)
 		    {
 		      params.board[i][j] = buf[k];
@@ -303,15 +232,14 @@ int main(void)
 		  i = 0;
 			while (i < params.x_figure)
 			 	params.figure[i++] = (char *)malloc(params.y_figure);
-
 			i = 0;
 		  while (i < params.x_figure)
 		  {
 				j = 0;
 		    get_next_line(fd, &buf);
         //write(fd1, "4", 1);
-        write(fd1, buf, ft_strlen(buf));
-        write(fd1, "\n", 1);
+        /*write(fd1, buf, ft_strlen(buf));
+        write(fd1, "\n", 1);*/
 		    while (j < params.y_figure)
 		    {
 		      params.figure[i][j] = buf[j];
@@ -321,7 +249,8 @@ int main(void)
 		    i++;
 		    ft_strdel(&buf);
 		  }
-			save_coord();
+      if (save_coord() == -1)
+        return (0);
 			//ft_printf("%d %d", 8, 2);
 			i = 0;
 			 while (i < params.x_figure)

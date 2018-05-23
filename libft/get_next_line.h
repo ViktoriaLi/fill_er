@@ -18,7 +18,7 @@
 # include <fcntl.h>
 # include "includes/libft.h"
 
-# define BUFF_SIZE 32
+# define BUFF_SIZE 1
 # define FD_LIMIT 12288
 # define STACK_LIMIT 8192000
 
@@ -41,6 +41,7 @@ void	swap_and_join(char **tmp, char *buf);
 # include <stdlib.h>
 # include <unistd.h>
 # include "libft.h"
+# include <fcntl.h>
 
 # define BUFF_SIZE 1000
 
