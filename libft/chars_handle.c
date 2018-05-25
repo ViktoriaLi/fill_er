@@ -113,14 +113,12 @@ char	*ft_len_strnstr(char *big, char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
-	int		res;
 
 	i = 0;
 	if (little[i] == 0)
 		return (NULL);
 	while (i < len && big[i] != 0)
 	{
-		res = i;
 		j = 0;
 		len = j + len;
 		while (i + j < len && big[i + j] == little[j] && little[j] != 0 &&

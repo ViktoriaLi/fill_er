@@ -16,7 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-
+# include <time.h>
+ 
 typedef	struct	s_params
 {
   int player_number;
@@ -37,8 +38,6 @@ typedef struct	s_coordinate
   struct s_coordinate	*next;
 }				t_coordinate;
 
-t_coordinate *coords;
-
 int		get_next_line(const int fd, char **line);
 int		ft_printf(const char *format, ...);
 char	*ft_strstr(const char *big, const char *little);
@@ -48,6 +47,9 @@ size_t		ft_strlen(const char *s);
 void	ft_strdel(char **as);
 char	**two_dim_arr_mem(char **field, int x, int y, char c);
 char	*ft_strcpy(char *dst, const char *src);
+char **free_mem(char **field, int num);
+void struct_initiation(t_params *params);
+void coords_parsing(int *x, int *y, char *buf);
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_itoa(int n);

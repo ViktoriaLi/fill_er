@@ -34,17 +34,3 @@ int		reading(char **line, char **all_fd, char **tmp, int fd);
 void	swap_and_join(char **tmp, char *buf);
 
 #endif
-
-/*#ifndef __GET_NEXT_LINE_H
-# define __GET_NEXT_LINE_H
-
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft.h"
-# include <fcntl.h>
-
-# define BUFF_SIZE 1000
-
-int	get_next_line(const int fd, char **line);
-
-#endif*/
