@@ -27,6 +27,8 @@ typedef	struct	s_params
   int x_figure;
   int y_figure;
   int diff;
+  int x_diff;
+  int y_diff;
   char **board;
   char **figure;
 }				t_params;
@@ -35,6 +37,8 @@ typedef struct	s_coordinate
 {
 	int x;
 	int y;
+  int x_diff;
+  int y_diff;
   struct s_coordinate	*next;
 }				t_coordinate;
 

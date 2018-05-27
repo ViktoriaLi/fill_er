@@ -1,289 +1,276 @@
-
 #include "filler.h"
 
-/*void	list_push_back(t_list **begin_list, t_coordinate *c)
+void choose_prime_position(t_coordinate *coords, t_params *params)
 {
-	t_list	*list;
-	t_list	*oneelem;
+	int i;
+	int j;
+	int x;
+	int y;
+	int res;
+	int res1;
+	int tmp1;
+	int tmp2;
+	//int x_diff;
+	//int y_diff;
+	t_coordinate *list;
 
-	coordinatemin(c);
-	list = *begin_list;
-	oneelem = ft_lstnew(c, sizeof(t_coordinate) * 4);
+	list = coords;
+	res = -1;
+	i = 0;
+	while (i < (*params).x_board)
+	{
+   		j = 0;
+   		while (j < (*params).y_board)
+   		{
+   			if ((*params).board[i][j] == (*params).oppos_number)
+   			{
+   				coords = list;
+   				while (coords)
+   				{
+   					
+   					tmp1 = (((*coords).x - i) >= 0) ? ((*coords).x - i) : (-1 * ((*coords).x - i));
+   					tmp2 = (((*coords).y - j) >= 0) ? ((*coords).y - j) : (-1 * ((*coords).y - j));
+   					res1 = tmp1 + tmp2;
+   					if (res == -1 || (res != -1 && res1 < res))
+   					{
+   						res = res1;
+   						x = (*coords).x;
+   						y = (*coords).y;	
+   						//x_diff = (*coords).x_diff;
+   						//y_diff = (*coords).y_diff;
+   					}
+   					coords = coords->next;
+   				}
+   			}
+      		j++;
+    	}
+     	i++;
+  	}
+	
+	/*if (x_diff != -1)
+		x = -1 * x_diff;
+	if (y_diff != -1)
+		y = -1 * y_diff;*/
+    ft_printf("%d %d\n", x, y);
+	while (list)
+	{
+		coords = list->next;
+		free(list);
+		list = coords;
+	}
+}
+
+void	coord_push_back(int x, int y, t_coordinate **coords, t_params *params)
+{
+	t_coordinate	*list;
+	t_coordinate	*oneelem;
+
+	oneelem = NULL;
+	list = *coords;
+	if (!(oneelem = (t_coordinate *)malloc(sizeof(t_coordinate))))
+		return ;
+	oneelem->next = NULL;
+  	oneelem->x = x;
+ 	oneelem->y = y;
+ 	oneelem->x_diff = (*params).x_diff;
+ 	oneelem->y_diff = (*params).y_diff;
 	if (!list)
 	{
-		*begin_list = oneelem;
+		*coords = oneelem;
 		return ;
 	}
 	while (list->next)
 		list = list->next;
 	list->next = oneelem;
-}*/
+}
 
-int		check_in_field(int i, int j, int k, int l, int count)
+int		check_in_field(int i, int j, int count, t_params *params)
 {
-  //ft_printf("%d %d %d %d %d\n", i, j, k, l, count);
+  int jj;
   int my;
 	int opos;
-  int x_finish;
-  int y_finish;
+	int k;
+	int l;
+
   my = 0;
 	opos = 0;
-  x_finish = i;
-  y_finish = j;
-  int tmp;
-  tmp = 0;
-  int a;
-
-  a = 0;
-
-	while (k < params.x_figure && i < params.x_board && tmp < count)
+  jj = j;
+  if ((*params).x_diff == -1)
+   	k = 0;
+  else
+  	k = (*params).x_diff;
+if ((*params).y_diff == -1)
+	l = 0;
+else
+	l = (*params).y_diff;
+	while (k < (*params).x_figure && i < (*params).x_board && count >= 0)
 	{
-    if (a != 0)
-    {
+      j = jj;
       l = 0;
-      j = 0;
-    }
-		while (l < params.y_figure && j < params.y_board && tmp < count)
+		while (l < (*params).y_figure && j < (*params).y_board && count >= 0)
 		{
-			if (params.figure[k][l] == '*')
+			if ((*params).figure[k][l] == '*')
 			{
-        //ft_printf("!!!  %d %d %d %d %d\n", i, j, k, l, count);
-        //ft_printf("???  %c", params.board[i][j]);
-				if (params.board[i][j] == params.player_number || params.board[i][j] == params.player_number + 32)
+				if ((*params).board[i][j] == (*params).player_number ||
+					(*params).board[i][j] == (*params).player_number + 32)
 					my++;
-				if (params.board[i][j] == params.oppos_number || params.board[i][j] == params.oppos_number + 32)
+				if ((*params).board[i][j] == (*params).oppos_number ||
+					(*params).board[i][j] == (*params).oppos_number + 32)
 					opos++;
-        tmp++;
+        count--;
 			}
       l++;
 			j++;
 		}
     k++;
 		i++;
-    a++;
 	}
-  //ft_printf("%d %d\n", my, opos, k, l, count);
-	if (tmp == count && my == 1 && opos == 0)
-		{
-			ft_printf("%d %d\n", x_finish, y_finish);
+	if (count == 0 && my == 1 && opos == 0)
 	    return (1);
-		}
-	else
-		return (0);
-	/*while (k < size)
-	{
-		if (i + c[k].x < params.x_board && j +
-		c[k].y < params.y_board)
-    {
-      if (params.board[i + c[k].x][j +
-  		 c[k].y] == params.player_number || params.board[i + c[k].x][j +
-   		 c[k].y] == params.player_number + 32)
-        my++;
-      if (params.board[i + c[k].x][j +
-    	 c[k].y] == params.oppos_number || params.board[i + c[k].x][j +
-     	 c[k].y] == params.oppos_number + 32)
-        opos++;
-      if (k < size && (i + c[k].x >= params.x_board || j +
-      	c[k].y >= params.y_board))
-      	return (0);
-    }
-			k++;
-	}
-  if (my == 1 && opos == 0)
-  {
-    if (params.x_diff != -1)
-      x_finish += params.x_diff;
-    if (params.y_diff != -1)
-      x_finish += params.y_diff ;
-    ft_printf("%d %d\n", x_finish, y_finish);
-    return (1);
-  }
-  else
-   return (0);*/
-
+	return (0);
 }
 
-void save_coord()
+int figure_size(t_params *params)
 {
-  int i;
+	int i;
   int j;
-	int k;
-  int l;
   int count;
 
   i = 0;
-  j = 0;
-	k = 0;
-	l = 0;
   count = 0;
-  while (i < params.x_figure)
+  while (i < (*params).x_figure)
   {
     j = 0;
-    while (j < params.y_figure)
+    while (j < (*params).y_figure)
     {
-      if (params.figure[i][j] == '*')
-        count++;
-      if (count == 1)
+    	if ((*params).figure[i][j] == '*')
       {
-        k = i;
-        l = j;
+      	
+   		if (((*params).x_diff != -1 && i < (*params).x_diff) || (*params).x_diff == -1)
+   			(*params).x_diff = i;
+   		if (((*params).y_diff != -1 && j < (*params).y_diff) || (*params).y_diff == -1)
+   			(*params).y_diff = j;
+      	count++;
       }
       j++;
     }
     i++;
   }
+  return (count);
+}
+
+int save_coord(t_params *params)
+{
+  int i;
+  int j;
+  int count;
+  t_coordinate *coords;
+
   i = 0;
   j = 0;
-  while (i < params.x_board)
+  count = figure_size(params);
+  coords = NULL;
+  while (i < (*params).x_board)
 	{
     j = 0;
-    while (j < params.y_board)
+    while (j < (*params).y_board)
     {
-      if (check_in_field(i, j, k, l, count) == 1)
-          return ;
+    if (check_in_field(i, j, count, params) == 1)
+      	coord_push_back(i, j, &coords, params);
       j++;
-    }
+    } 
     i++;
 	}
+	if (coords)
+	{
+		choose_prime_position(coords, params);
+		return (1);
+	}
+  	else 
+  		return (-1);
 }
 
-void struct_initiation()
-{
-  params.x_board = 0;
-  params.y_board = 0;
-  params.x_figure = 0;
-  params.y_figure = 0;
-  params.board = NULL;
-  params.figure = NULL;
-}
-
-int main(void)
+void board_making(char *buf, int fd, t_params *params)
 {
   int i;
   int j;
   int k;
-  int fd;
-  int fd1;
-  char *buf;
-  char *tmp;
-  //t_list	*list;
-  i = 0;
-  j = 0;
-  k = 0;
 
-  //fd = open("test1", O_RDONLY);
-  fd1 = open("res", O_WRONLY);
-  fd = 0;
+  coords_parsing(&params->x_board, &params->y_board, buf);
+	(*params).board = two_dim_arr_mem((*params).board, 
+		(*params).x_board, (*params).y_board, '\0');
+  if ((*params).x_board <= 100)
+      (*params).diff = 4;
+  else
+      (*params).diff = 5;
+  get_next_line(fd, &buf);
+  ft_strdel(&buf);
+  i = 0;
+  while (i < (*params).x_board)
+  {
+    j = 0;
+    k = (*params).diff;
+    get_next_line(fd, &buf);
+    while (k < (*params).y_board + (*params).diff)
+      (*params).board[i][j++] = buf[k++];
+    i++;
+    ft_strdel(&buf);
+  }
+}
+
+int figure_making(char *buf, int fd, t_params *params)
+{
+	int i;
+
+		coords_parsing(&params->x_figure, &params->y_figure, buf);
+		
+		(*params).figure = two_dim_arr_mem((*params).figure, (*params).x_figure,
+			(*params).y_figure, '\0');
+		i = 0;
+		while (i < (*params).x_figure)
+		{
+			get_next_line(fd, &buf);
+			(*params).figure[i] = ft_strcpy((*params).figure[i], buf);
+			i++;
+			ft_strdel(&buf);
+		}
+		if (save_coord(params) == -1)
+		{
+			ft_printf("%d %d\n", 0, 0);
+			return (0);
+		}
+		(*params).figure = free_mem((*params).figure, (*params).x_figure);
+		(*params).board = free_mem((*params).board, (*params).x_board);
+	return (1);
+}
+
+int main(void)
+{
+  char *buf;
+	t_params params;
+
   buf = NULL;
-  tmp = NULL;
-	params.player_number = 'O';
-  params.oppos_number = 'X';
-  struct_initiation();
-	while (1)
+  struct_initiation(&params);
+	while (get_next_line(0, &buf) > 0)
 	{
-    i = 0;
-		if (get_next_line(fd, &buf) < 1)
-			break;
-    /*write(fd1, "1", 1);
-    write(fd1, buf, ft_strlen(buf));
-    write(fd1, "\n", 1);*/
-		//ft_printf("BUF%s\n", buf);
 		if (ft_strstr(buf, "p2") && ft_strstr(buf, "vlikhotk"))
 		{
-			params.player_number = 'X';
-			params.oppos_number = 'O';
-      continue ;
+		    params.player_number = 'X';
+		    params.oppos_number = 'O';
+        ft_strdel(&buf);
+        continue ;
 		}
 		if (ft_strstr(buf, "Plateau"))
 		{
-      i = 0;
-			while (buf[i] != ' ')
-				i++;
-			params.x_board = ft_atoi(&buf[++i]);
-			while (buf[i] != ' ')
-				i++;
-			params.y_board = ft_atoi(&buf[++i]);
-      //tmp = ft_itoa(params.x_board);
-      params.board = (char **)malloc(sizeof(char *) * params.x_board);
-			i = 0;
-			while (i < params.x_board)
-				params.board[i++] = (char *)malloc(params.y_board);
-			get_next_line(fd, &buf);
-      /*write(fd1, "2", 1);
-      write(fd1, buf, ft_strlen(buf));
-      write(fd1, "\n", 1);*/
-      //ft_printf("EMPTY line%s\n", buf);
-			ft_strdel(&buf);
-      //ft_printf("DDD%d\n", params.x_board);
-			i = 0;
-		  while (i < params.x_board)
+      		board_making(buf, 0, &params);
+      		continue ;
+		}
+			if (ft_strstr(buf, "Piece"))
 			{
-        //write(fd1, "test", 4);
-				j = 0;
-		    k = 4;
-		    get_next_line(fd, &buf);
-        /*write(fd1, "3", 1);
-        write(fd1, buf, ft_strlen(buf));
-        write(fd1, "\n", 1);*/
-		    while (k < params.y_board + 4)
-		    {
-		      params.board[i][j] = buf[k];
-		      k++;
-		      j++;
-		    }
-				//ft_printf("BOARD%s\n", params.board[i]);
-		    ft_strdel(&buf);
-				i++;
+				if (!figure_making(buf, 0, &params))
+					return (0);
+				continue;
 			}
-      continue ;
-		}
-    //ft_printf("BOARD%s\n", "test");
-		if (ft_strstr(buf, "Piece"))
-		{
-      //ft_printf("BOARD%s\n", "test");
-			i = 0;
-		  while (buf[i] != ' ')
-		    i++;
-		  params.x_figure = ft_atoi(&buf[++i]);
-		  while (buf[i] != ' ')
-		    i++;
-		  params.y_figure = ft_atoi(&buf[++i]);
-			//ft_printf("FIG size%d %d\n", params.x_figure, params.y_figure);
-		  params.figure = (char **)malloc(sizeof(char *) * params.x_figure);
-		  i = 0;
-			while (i < params.x_figure)
-			 	params.figure[i++] = (char *)malloc(params.y_figure);
-			ft_strdel(&buf);
-			i = 0;
-		  while (i < params.x_figure)
-		  {
-				j = 0;
-		    get_next_line(fd, &buf);
-        /*write(fd1, "4", 1);
-        write(fd1, buf, ft_strlen(buf));
-        write(fd1, "\n", 1);*/
-		    while (j < params.y_figure)
-		    {
-		      params.figure[i][j] = buf[j];
-		      j++;
-		    }
-				//ft_printf("FIGURE%s\n", params.figure[i]);
-		    i++;
-		    ft_strdel(&buf);
-		  }
-			save_coord();
-			//ft_printf("%d %d", 8, 2);
-			i = 0;
-			 while (i < params.x_figure)
-        ft_strdel(&params.figure[i++]);
-        free(params.figure);
-        i = 0;
-  			while (i < params.x_board)
-        ft_strdel(&params.board[i++]);
-        free(params.board);
-			 //free(buf);
-		}
-    //ft_printf("BOARD%s\n", "test");
+    ft_strdel(&buf);
 	}
-  //ft_printf("%d %d", 8, 2);
 }

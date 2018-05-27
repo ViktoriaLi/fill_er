@@ -378,3 +378,53 @@ Piece 2 3:
 Piece 2 3:
 ..*
 .**
+
+int save_coord(t_params *params)
+{
+  int i;
+  int j;
+  int count;
+  t_coordinate *coords;
+
+  i = 0;
+  j = 0;
+  count = 0;
+  coords = NULL;
+  while (i < (*params).x_figure)
+  {
+    j = 0;
+    while (j < (*params).y_figure)
+      if ((*params).figure[i][j++] == '*')
+        count++;
+    i++;
+  }
+  i = 0;
+  j = 0;
+  while (i < (*params).x_board)
+	{
+    j = 0;
+    while (j < (*params).y_board)
+    {
+    if (check_in_field(i, j, count, params) == 1)
+      {
+      	ft_printf("%s\n", "test");
+      		coord_push_back(i, j, &coords);
+          //return (1);
+      }
+      j++;
+    } 
+    i++;
+	}
+	while (coords->next)
+	{
+		ft_printf("%d %d\n", (*coords).x, (*coords).y);
+		coords = coords->next;
+	}
+	if (coords)
+	{
+		ft_printf("%s\n", "check");
+		choose_prime_position(coords, params);
+		return (1);
+	}
+  	return (-1);
+}

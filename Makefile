@@ -14,9 +14,9 @@ NAME = resources/players/vlikhotk.filler
 
 LIB_DIR = ./libft/
 
-SFILES = main1.c
+SFILES = main.c general_funcs.c
 
-OFILES = main1.o
+OFILES = main.o general_funcs.o
 
 LIBFT = $(LIBFT_DIR)libftprintf.a
 LIBFT_DIR = $(LIB_DIR)
