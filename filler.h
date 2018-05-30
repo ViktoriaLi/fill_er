@@ -38,8 +38,6 @@ typedef struct	s_coordinate
 {
 	int					x;
 	int					y;
-	int					x_diff;
-	int					y_diff;
 	struct s_coordinate	*next;
 }				t_coordinate;
 
@@ -49,8 +47,7 @@ char			**free_mem(char **field, int num);
 void			struct_initiation(t_params *params);
 void			coords_parsing(int *x, int *y, char *buf);
 void			choose_prime_position(t_coordinate *coords, t_params *params);
-void			coord_push_back(int x, int y, t_coordinate **coords,
-				t_params *params);
+void			coord_push_back(int x, int y, t_coordinate **coords);
 int				check_in_field(int i, int j, int count, t_params *params);
 int				figure_size(t_params *params, int i);
 int				save_coord(t_params *params);
