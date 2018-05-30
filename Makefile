@@ -49,11 +49,11 @@ $(VIZUALIZER): $(OVIZ)
 	$(CC) $(OVIZ) $(LIBFT) -o $(VIZUALIZER)
 
 clean:
-	rm -rf $(OFILES)
+	rm -rf $(OFILES) $(OVIZ)
 	make clean -C $(LIBFT_DIR)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) $(VIZUALIZER)
 	make fclean -C $(LIBFT_DIR)
 
 re: fclean all
