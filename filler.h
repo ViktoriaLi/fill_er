@@ -42,20 +42,29 @@ typedef struct	s_coordinate
   struct s_coordinate	*next;
 }				t_coordinate;
 
-int		get_next_line(const int fd, char **line);
-int		ft_printf(const char *format, ...);
-char	*ft_strstr(const char *big, const char *little);
-char		**ft_strsplit(char const *s, char c);
-int			ft_atoi(const char *str);
-size_t		ft_strlen(const char *s);
-void	ft_strdel(char **as);
 char	**two_dim_arr_mem(char **field, int x, int y, char c);
 char	*ft_strcpy(char *dst, const char *src);
 char **free_mem(char **field, int num);
 void struct_initiation(t_params *params);
 void coords_parsing(int *x, int *y, char *buf);
+void choose_prime_position(t_coordinate *coords, t_params *params);
+void  coord_push_back(int x, int y, t_coordinate **coords, t_params *params);
+int   check_in_field(int i, int j, int count, t_params *params);
+int figure_size(t_params *params);
+int save_coord(t_params *params);
+void board_making(char *buf, int fd, t_params *params);
+int figure_making(char *buf, int fd, t_params *params);
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len);
-char			*ft_itoa(int n);
+int   get_next_line(const int fd, char **line);
+int   ft_printf(const char *format, ...);
+char  *ft_strstr(const char *big, const char *little);
+int     ft_atoi(const char *str);
+size_t    ft_strlen(const char *s);
+void  ft_strdel(char **as);
+
+void fin_display(char *buf, int fd);
+void board_print(t_params *params, char *buf);
+void board_display(t_params *params, char *buf, int fd);
+
 
 #endif
