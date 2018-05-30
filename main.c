@@ -129,6 +129,7 @@ int		main(void)
 			params.player_number = 'X';
 			params.oppos_number = 'O';
 			ft_strdel(&params.buf);
+			continue ;
 		}
 		if (ft_strstr(params.buf, "Plateau"))
 		{

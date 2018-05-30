@@ -18,7 +18,7 @@ void	struct_initiation(t_params *params)
 	(*params).y_board = 0;
 	(*params).x_figure = 0;
 	(*params).y_figure = 0;
-	(*params).diff = 0;
+	(*params).diff = 4;
 	(*params).x_diff = -1;
 	(*params).y_diff = -1;
 	(*params).buf = NULL;

@@ -63,10 +63,13 @@ char			*ft_strstr(const char *big, const char *little);
 int				ft_atoi(const char *str);
 size_t			ft_strlen(const char *s);
 void			ft_strdel(char **as);
+int				ft_strcmp(const char *s1, const char *s2);
 
-void			fin_display(char *buf, int fd);
-void			board_print(t_params *params, char *buf);
-void			board_display(t_params *params, char *buf, int fd);
+void			color_fin_display(char *buf, int fd);
+void			black_fin_display(char *buf, int fd, int argc);
+void			square_board_print(t_params *params, char *buf);
+void			symb_board_print(t_params *params, char *buf);
+void			black_board_print(t_params *params, char *buf);
 int				save_coord(t_params *params);
 
 #endif

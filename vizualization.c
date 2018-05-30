@@ -1,110 +1,69 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vizualization.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlikhotk <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/30 14:22:02 by vlikhotk          #+#    #+#             */
+/*   Updated: 2018/05/30 14:26:07 by vlikhotk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
-void fin_display(char *buf, int fd)
+void	board_display(t_params *params, int fd, char **argv, int argc)
 {
-	int i;
- 	int j;
- 	int k;
-	char *tmp;
-
-	tmp = buf;
-	i = 0;
-	while (tmp[i] != ':')
-		i++;
-	i++;
-	j = ft_atoi(&tmp[i]);
-	get_next_line(fd, &buf);
-	i = 0;
-	while (tmp[i] != ':')
-		i++;
-	i++;
-	k = ft_atoi(&buf[i]);
-	ft_printf("%s%c%s", "\x1b[1;47m\x1b[?25l", '\n', "\x1b[0m");
-	j > k ? ft_printf("%s%s%s\n", "\x1b[1;32m\x1b[1;47m\x1b[?25l", tmp, "\x1b[0m") : 
-	ft_printf("%s%s%s\n", "\x1b[1;31m\x1b[1;47m\x1b[?25l", tmp, "\x1b[0m");
-	k > j? ft_printf("%s%s%s\n", "\x1b[1;32m\x1b[1;47m\x1b[?25l", buf, "\x1b[0m") : 
-	ft_printf("%s%s%s\n", "\x1b[1;31m\x1b[1;47m\x1b[?25l", buf, "\x1b[0m");
-    ft_strdel(&buf);
-    ft_strdel(&tmp);
-}
-
-void board_print(t_params *params, char *buf)
-{
-	int k;
-
-	k = (*params).diff;
-	while (k < (*params).y_board + (*params).diff)
-    	{
-    		if (buf[k] == (*params).player_number)
-    			ft_printf("%s%c%s", "\x1b[1;35m\x1b[1;47m\x1b[?25l", buf[k], "\x1b[0m");
-    		else if (buf[k] == (*params).player_number + 32)
-    			ft_printf("%s%c%s", "\x1b[2;35m\x1b[1;47m\x1b[?25l", buf[k], "\x1b[0m");
-    		else if (buf[k] == (*params).oppos_number)
-    			ft_printf("%s%c%s", "\x1b[1;34m\x1b[1;47m\x1b[?25l", buf[k], "\x1b[0m");
-    		else if (buf[k] == (*params).oppos_number + 32)
-    			ft_printf("%s%c%s", "\x1b[2;34m\x1b[1;47m\x1b[?25l", buf[k], "\x1b[0m");
-    		else
-    			ft_printf("%s%c%s", "\x1b[1;33m\x1b[1;47m\x1b[?25l", buf[k], "\x1b[0m");
-    		k++;
-    	}
-}
-
-void board_display(t_params *params, char *buf, int fd)
-{
-	int i;
- 	int j;
- 	struct timespec tw = {0, 100000000};
+	int				i;
+	struct timespec tw;
 	struct timespec tr;
 
- 	i = 0;
-	j = 0;
+	i = 0;
+	tw.tv_sec = 0;
+	tw.tv_nsec = 100000000;
 	system("clear");
-	if ((*params).x_board <= 100)
-    	(*params).diff = 4;
-  	else
-      (*params).diff = 5;
-  	get_next_line(fd, &buf);
-  	ft_strdel(&buf);
- 	while (i < (*params).x_board)
- 	{
-   		
-    	get_next_line(fd, &buf);
-   		board_print(params, buf);
-    	ft_printf("%s%c%s", "\x1b[1;47m\x1b[?25l", '\n', "\x1b[0m");
-   		i++;
-    	ft_strdel(&buf);
-  	}
-	ft_strdel(&buf);
-	nanosleep (&tw, &tr);
+	if ((*params).x_board > 100)
+		(*params).diff = 5;
+	get_next_line(fd, &params->buf);
+	ft_strdel(&params->buf);
+	while (i++ < (*params).x_board)
+	{
+		get_next_line(fd, &params->buf);
+		if (argc > 1 && ft_strcmp(argv[1], "square") == 0)
+			square_board_print(params, (*params).buf);
+		else if (argc > 1 && ft_strcmp(argv[1], "symb") == 0)
+			symb_board_print(params, (*params).buf);
+		else
+			black_board_print(params, (*params).buf);
+		ft_strdel(&params->buf);
+	}
+	ft_strdel(&params->buf);
+	nanosleep(&tw, &tr);
 }
 
-int main()
+int		main(int argc, char **argv)
 {
-	int fd;
-	char *buf;
-	t_params params;
-	
-	fd = 0;
-	buf = NULL;
+	t_params	params;
+
 	struct_initiation(&params);
-	while (get_next_line(fd, &buf) > 0)
+	while (get_next_line(0, &params.buf) > 0)
 	{
-		if (ft_strstr(buf, "p2") && ft_strstr(buf, "vlikhotk"))
+		if (ft_strstr(params.buf, "p2") && ft_strstr(params.buf, "vlikhotk"))
 		{
-		    params.player_number = 'X';
-		    params.oppos_number = 'O';
-        	ft_strdel(&buf);
-        	continue ;
+			params.player_number = 'X';
+			params.oppos_number = 'O';
+			ft_strdel(&params.buf);
+			continue ;
 		}
-		if (ft_strstr(buf, "fin"))
+		if (ft_strstr(params.buf, "fin"))
 		{
-			fin_display(buf, fd);
-        	return (0);
+			black_fin_display(params.buf, 0, argc);
+			return (0);
 		}
-		if (ft_strstr(buf, "Plateau"))
+		if (ft_strstr(params.buf, "Plateau"))
 		{
-			coords_parsing(&params.x_board, &params.y_board, buf);
-			board_display(&params, buf, fd);
+			coords_parsing(&params.x_board, &params.y_board, params.buf);
+			board_display(&params, 0, argv, argc);
 		}
 	}
 }

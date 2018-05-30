@@ -15,8 +15,11 @@ NAME = resources/players/vlikhotk.filler
 LIB_DIR = ./libft/
 
 SFILES = main.c general_funcs.c find_solve.c
-
 OFILES = main.o general_funcs.o find_solve.o
+
+VIZUALIZER = vizualizer
+SVIZ = vizualization.c general_funcs.c color_types.c
+OVIZ = vizualization.o general_funcs.o color_types.o
 
 LIBFT = $(LIBFT_DIR)libftprintf.a
 LIBFT_DIR = $(LIB_DIR)
@@ -30,14 +33,20 @@ CC = gcc
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OFILES)
+$(NAME): $(LIBFT) $(VIZUALIZER) $(OFILES)
 	$(CC) $(OFILES) $(LIBFT) -o $(NAME)
 
 $(OFILES): %.o:%.c
 	$(CC) -c $< -o $@ $(CC_FLAGS) $(HEADER_FLAGS)
 
+$(OVIZ): %.o:%.c
+	$(CC) -c $(CC_FLAGS) $(SVIZ)
+
 $(LIBFT):
 	make -C $(LIBFT_DIR)
+
+$(VIZUALIZER): $(OVIZ)
+	$(CC) $(OVIZ) $(LIBFT) -o $(VIZUALIZER)
 
 clean:
 	rm -rf $(OFILES)
