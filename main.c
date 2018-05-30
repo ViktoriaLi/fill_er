@@ -16,7 +16,7 @@ void	coord_push_back(int x, int y, t_coordinate **coords, t_params *params)
 {
 	t_coordinate	*list;
 	t_coordinate	*oneelem;
-
+	//int fd = open("res", O_WRONLY | O_APPEND);
 	oneelem = NULL;
 	list = *coords;
 	if (!(oneelem = (t_coordinate *)malloc(sizeof(t_coordinate))))
@@ -26,6 +26,15 @@ void	coord_push_back(int x, int y, t_coordinate **coords, t_params *params)
 	oneelem->y = y;
 	oneelem->x_diff = (*params).x_diff;
 	oneelem->y_diff = (*params).y_diff;
+	//ft_printf("5 %d %d\n", oneelem->y_diff, oneelem->y_diff);
+	/*char *tmp3;
+	char *tmp4;
+	tmp3 = ft_itoa(oneelem->x_diff);
+	tmp4 = ft_itoa(oneelem->y_diff);
+	write(fd, tmp3, ft_strlen(tmp3));
+	write(fd, "\n", 1);
+	write(fd, tmp4, ft_strlen(tmp4));
+	write(fd, "\n", 1);*/
 	if (!list)
 	{
 		*coords = oneelem;
@@ -34,13 +43,14 @@ void	coord_push_back(int x, int y, t_coordinate **coords, t_params *params)
 	while (list->next)
 		list = list->next;
 	list->next = oneelem;
+
 }
 
 int		figure_size(t_params *params, int i)
 {
 	int j;
 	int count;
-
+	int fd = open("res", O_WRONLY | O_APPEND);
 	count = 0;
 	while (i < (*params).x_figure)
 	{
@@ -49,18 +59,26 @@ int		figure_size(t_params *params, int i)
 		{
 			if ((*params).figure[i][j] == '*')
 			{
-				if (((*params).x_diff != -1 && i < (*params).x_diff)
-					|| (*params).x_diff == -1)
+				/*if ((*params).x_diff == 0)
 					(*params).x_diff = i;
-				if (((*params).y_diff != -1 && j < (*params).y_diff)
-					|| (*params).y_diff == -1)
-					(*params).y_diff = j;
+				if ((*params).y_diff == 0)
+					(*params).y_diff = j;*/
+				//ft_printf("4 %d %d\n", (*params).x_diff, (*params).y_diff);
 				count++;
 			}
 			j++;
 		}
 		i++;
 	}
+	char *tmp3;
+	char *tmp4;
+	tmp3 = ft_itoa((*params).x_diff);
+	tmp4 = ft_itoa((*params).y_diff);
+	write(fd, tmp3, ft_strlen(tmp3));
+	write(fd, "\n", 1);
+	write(fd, tmp4, ft_strlen(tmp4));
+	write(fd, "\n", 1);
+	close(fd);
 	return (count);
 }
 
@@ -73,9 +91,7 @@ void	board_making(char *buf, int fd, t_params *params)
 	coords_parsing(&params->x_board, &params->y_board, buf);
 	(*params).board = two_dim_arr_mem((*params).board,
 		(*params).x_board, (*params).y_board, '\0');
-	if ((*params).x_board <= 100)
-		(*params).diff = 4;
-	else
+	if ((*params).x_board > 100)
 		(*params).diff = 5;
 	get_next_line(fd, &buf);
 	ft_strdel(&buf);
@@ -107,6 +123,8 @@ int		figure_making(char *buf, int fd, t_params *params)
 		i++;
 		ft_strdel(&buf);
 	}
+	(*params).x_diff = 0;
+	(*params).y_diff = 0;
 	if (save_coord(params) == -1)
 	{
 		ft_printf("%d %d\n", 0, 0);
@@ -120,9 +138,10 @@ int		figure_making(char *buf, int fd, t_params *params)
 int		main(void)
 {
 	t_params	params;
-
+	//int fd = open("test", O_RDONLY);
+	int fd = 0;
 	struct_initiation(&params);
-	while (get_next_line(0, &params.buf) > 0)
+	while (get_next_line(fd, &params.buf) > 0)
 	{
 		if (ft_strstr(params.buf, "p2") && ft_strstr(params.buf, "vlikhotk"))
 		{
@@ -133,12 +152,12 @@ int		main(void)
 		}
 		if (ft_strstr(params.buf, "Plateau"))
 		{
-			board_making(params.buf, 0, &params);
+			board_making(params.buf, fd, &params);
 			continue ;
 		}
 		if (ft_strstr(params.buf, "Piece"))
 		{
-			if (!figure_making(params.buf, 0, &params))
+			if (!figure_making(params.buf, fd, &params))
 				return (0);
 			continue;
 		}

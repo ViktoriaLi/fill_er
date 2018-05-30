@@ -72,4 +72,5 @@ void			symb_board_print(t_params *params, char *buf);
 void			black_board_print(t_params *params, char *buf);
 int				save_coord(t_params *params);
 
+char			*ft_itoa(int n);
 #endif
