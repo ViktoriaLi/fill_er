@@ -24,14 +24,15 @@ void	coord_push_back(int x, int y, t_coordinate **coords)
 	oneelem->next = NULL;
 	oneelem->x = x;
 	oneelem->y = y;
-	if (!list)
+	if (!(*coords))
 	{
 		*coords = oneelem;
 		return ;
 	}
-	while (list->next)
-		list = list->next;
-	list->next = oneelem;
+	while ((*coords)->next)
+		(*coords) = (*coords)->next;
+	(*coords)->next = oneelem;
+	*coords = list;
 }
 
 int		figure_size(t_params *params, int i)
@@ -46,7 +47,9 @@ int		figure_size(t_params *params, int i)
 		while (j < (*params).y_figure)
 		{
 			if ((*params).figure[i][j] == '*')
+			{
 				count++;
+			}
 			j++;
 		}
 		i++;
@@ -54,54 +57,56 @@ int		figure_size(t_params *params, int i)
 	return (count);
 }
 
-void	board_making(char *buf, int fd, t_params *params)
+void	board_making(char **buf, int fd, t_params *params)
 {
 	int i;
 	int j;
 	int k;
 
-	coords_parsing(&params->x_board, &params->y_board, buf);
-	(*params).board = two_dim_arr_mem((*params).board,
-		(*params).x_board, (*params).y_board, '\0');
-	if ((*params).x_board > 100)
-		(*params).diff = 5;
-	get_next_line(fd, &buf);
-	ft_strdel(&buf);
 	i = 0;
+	coords_parsing(&(params->x_board), &(params->y_board), *buf);
+	ft_strdel(buf);
+	two_dim_arr_mem(&((*params).board),
+		(*params).x_board, (*params).y_board, '\0');
+	get_next_line(fd, buf);
+	ft_strdel(buf);
 	while (i < (*params).x_board)
 	{
 		j = 0;
 		k = (*params).diff;
-		get_next_line(fd, &buf);
+		get_next_line(fd, buf);
 		while (k < (*params).y_board + (*params).diff)
-			(*params).board[i][j++] = buf[k++];
+			(*params).board[i][j++] = (*buf)[k++];
 		i++;
-		ft_strdel(&buf);
+		ft_strdel(buf);
 	}
 }
 
-int		figure_making(char *buf, int fd, t_params *params)
+int		figure_making(char **buf, int fd, t_params *params)
 {
 	int i;
 
-	coords_parsing(&params->x_figure, &params->y_figure, buf);
-	(*params).figure = two_dim_arr_mem((*params).figure, (*params).x_figure,
-		(*params).y_figure, '\0');
 	i = 0;
+	coords_parsing(&params->x_figure, &params->y_figure, *buf);
+	ft_strdel(buf);
+	two_dim_arr_mem(&((*params).figure), (*params).x_figure,
+		(*params).y_figure, '\0');
 	while (i < (*params).x_figure)
 	{
-		get_next_line(fd, &buf);
-		(*params).figure[i] = ft_strcpy((*params).figure[i], buf);
+		get_next_line(fd, buf);
+		(*params).figure[i] = ft_strcpy((*params).figure[i], *buf);
 		i++;
-		ft_strdel(&buf);
+		ft_strdel(buf);
 	}
 	if (save_coord(params) == -1)
 	{
 		ft_printf("%d %d\n", 0, 0);
+		free_mem((*params).figure, (*params).x_figure);
+		free_mem((*params).board, (*params).x_board);
 		return (0);
 	}
-	(*params).figure = free_mem((*params).figure, (*params).x_figure);
-	(*params).board = free_mem((*params).board, (*params).x_board);
+	free_mem((*params).figure, (*params).x_figure);
+	free_mem((*params).board, (*params).x_board);
 	return (1);
 }
 
@@ -121,12 +126,12 @@ int		main(void)
 		}
 		if (ft_strstr(params.buf, "Plateau"))
 		{
-			board_making(params.buf, 0, &params);
+			board_making(&(params.buf), 0, &params);
 			continue ;
 		}
 		if (ft_strstr(params.buf, "Piece"))
 		{
-			if (!figure_making(params.buf, 0, &params))
+			if (!figure_making(&(params.buf), 0, &params))
 				return (0);
 			continue;
 		}

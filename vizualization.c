@@ -63,7 +63,9 @@ int		main(int argc, char **argv)
 		if (ft_strstr(params.buf, "Plateau"))
 		{
 			coords_parsing(&params.x_board, &params.y_board, params.buf);
+			ft_strdel(&params.buf);
 			board_display(&params, 0, argv, argc);
 		}
+		ft_strdel(&params.buf);
 	}
 }

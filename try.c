@@ -1,430 +1,121 @@
-int i;
-int j;
-
-int k;
-int fd;
-int fd1;
-char *buf;
-//t_list	*list;
-i = 0;
-j = 0;
-k = 0;
-fd = open("test", O_RDONLY);
-fd1 = open("res", O_WRONLY);
-//fd = 0;
-struct_initiation();
-  while (get_next_line(fd, &buf))
-    {
-      //write(fd1, buf, ft_strlen(buf));
-      //write(fd1, "\n", 1);
-      if (ft_strstr(buf, "vlikhotk") && ft_strstr(buf, "p2"))
-      {
-        params.player_number = 'X';
-        params.oppos_number = '0';
-      }
-
-      if (ft_strstr(buf, "Plateau"))
-      {
-        while (buf[i] > '9')
-          i++;
-        params.x_board = ft_atoi(&buf[i++]);
-        while (buf[i] >= '0' && buf[i] <= '9')
-          i++;
-        i++;
-        params.y_board = ft_atoi(&buf[i]);
-        break;
-      }
-      free(buf);
-      //ft_printf("%s\n", buf);
-    }
-  /*if (ft_strstr(buf, "vlikhotk") && ft_strstr(buf, "p2"))
-  {
-    params.player_number = 'X';
-    params.oppos_number = '0';
-  }
-  free(buf);
-  get_next_line(fd, &buf);
-  while (buf[i] > '9')
-    i++;
-  params.x_board = ft_atoi(&buf[i++]);
-  while (buf[i] >= '0' && buf[i] <= '9')
-    i++;
-  i++;
-  params.y_board = ft_atoi(&buf[i]);
-  free(buf);*/
-
-  //ft_printf("%s\n", buf);
-//ft_printf("%c\n", params.player_number );
-//ft_printf("%d\n", params.x_board );
-//ft_printf("%d\n", params.y_board );
-get_next_line(fd, &buf);
-/*write(fd1, buf, ft_strlen(buf));
-   write(fd1, "\n", 1);*/
-free(buf);
-params.board = (char **)malloc(sizeof(char *) * params.x_board);
-i = 0;
-while (i < params.x_board)
+void	coord_push_back(int x, int y, t_coordinate **coords)
 {
-  params.board[i] = (char *)malloc(params.y_board + 1);
-  params.board[i][params.y_board] = 0;
-  i++;
-}
-i = 0;
-while (i < params.x_board)
-{
-  j = 0;
-  k = 4;
-  get_next_line(fd, &buf);
-  while (k < params.y_board + 4)
-  {
-    params.board[i][j] = buf[k];
-    k++;
-    j++;
-  }
-  //ft_printf("1%s\n", params.board[i]);
-  free(buf);
-  i++;
-}
-get_next_line(fd, &buf);
-/*write(fd1, buf, ft_strlen(buf));
-   write(fd1, "\n", 1);*/
-i = 0;
-while (buf[i] > '9')
-  i++;
-params.x_figure = ft_atoi(&buf[i++]);
-while (buf[i] >= '0' && buf[i] <= '9')
-  i++;
-i++;
-params.y_figure = ft_atoi(&buf[i]);
-//ft_printf("%d\n", params.x_figure );
-//ft_printf("%d\n", params.y_figure );
-free(buf);
-params.figure = (char **)malloc(sizeof(char *) * params.x_figure);
-i = 0;
-while (i < params.x_figure)
-{
- params.figure[i] = (char *)malloc(params.y_figure + 1);
- params.figure[i][params.y_figure] = 0;
- i++;
-}
-i = 0;
-while (i < params.x_figure)
-{
-  j = 0;
-  get_next_line(fd, &buf);
-  while (j < params.y_figure)
-  {
-    params.figure[i][j] = buf[j];
-    j++;
-  }
-  //ft_printf("1%s\n", params.figure[i]);
-  i++;
-  free(buf);
-}
-save_coord();
-//ft_printf("%d %d", 8, 2);
-i = 0;
-while (i < params.x_figure)
-{
-  free(params.figure[i++]);
-  //params.figure[i++] = NULL;
-}
-free(params.figure);
+	t_coordinate	*list;
+	t_coordinate	*oneelem;
 
-Piece 1 11:
-....**.....
-
-
-int main(void)
-{
-  int i;
-  int j;
-	int count;
-  int k;
-  int fd;
-  int fd1;
-  char *buf;
-  //t_list	*list;
-  i = 0;
-  j = 0;
-  k = 0;
-	count = 0;
-  //fd = open("test", O_RDONLY);
-  fd1 = open("res", O_WRONLY);
-  fd = 0;
-	params.player_number = 'O';
-  params.oppos_number = 'X';
-	while (1)
+	oneelem = NULL;
+	list = *coords;
+	if (!(oneelem = (t_coordinate *)malloc(sizeof(t_coordinate))))
+		return ;
+	oneelem->next = NULL;
+	oneelem->x = x;
+	oneelem->y = y;
+	if (!list)
 	{
-		if (get_next_line(fd, &buf) < 1)
-			break;
-		//ft_printf("%s\n", "1test");
-		if (count == 1 && ft_strstr(buf, "vlikhotk"))
+		*coords = oneelem;
+		return ;
+	}
+	while (list->next)
+		list = list->next;
+	list->next = oneelem;
+}
+
+int		figure_size(t_params *params, int i)
+{
+	int j;
+	int count;
+
+	count = 0;
+	while (i < (*params).x_figure)
+	{
+		j = 0;
+		while (j < (*params).y_figure)
+		{
+			if ((*params).figure[i][j] == '*')
+				count++;
+			j++;
+		}
+		i++;
+	}
+	return (count);
+}
+
+void	board_making(char *buf, int fd, t_params *params)
+{
+	int i;
+	int j;
+	int k;
+
+	coords_parsing(&params->x_board, &params->y_board, buf);
+	(*params).board = two_dim_arr_mem((*params).board,
+		(*params).x_board, (*params).y_board, '\0');
+	ft_strdel(&buf);
+	get_next_line(fd, &buf);
+	ft_strdel(&buf);
+	i = 0;
+	while (i < (*params).x_board)
+	{
+		j = 0;
+		k = (*params).diff;
+		get_next_line(fd, &buf);
+		while (k < (*params).y_board + (*params).diff)
+			(*params).board[i][j++] = buf[k++];
+		i++;
+		ft_strdel(&buf);
+	}
+}
+
+int		figure_making(char *buf, int fd, t_params *params)
+{
+	int i;
+
+	coords_parsing(&params->x_figure, &params->y_figure, buf);
+	(*params).figure = two_dim_arr_mem((*params).figure, (*params).x_figure,
+		(*params).y_figure, '\0');
+	ft_strdel(&buf);
+	i = 0;
+	while (i < (*params).x_figure)
+	{
+		get_next_line(fd, &buf);
+		(*params).figure[i] = ft_strcpy((*params).figure[i], buf);
+		i++;
+		ft_strdel(&buf);
+	}
+	if (save_coord(params) == -1)
+	{
+		ft_printf("%d %d\n", 0, 0);
+		return (0);
+	}
+	(*params).figure = free_mem((*params).figure, (*params).x_figure);
+	(*params).board = free_mem((*params).board, (*params).x_board);
+	return (1);
+}
+
+int		main(void)
+{
+	t_params	params;
+
+	struct_initiation(&params);
+	while (get_next_line(0, &params.buf) > 0)
+	{
+		if (ft_strstr(params.buf, "p2") && ft_strstr(params.buf, "vlikhotk"))
 		{
 			params.player_number = 'X';
 			params.oppos_number = 'O';
+			ft_strdel(&params.buf);
+			continue ;
 		}
-		//ft_printf("1%c %c\n", params.player_number, params.oppos_number);
-		//ft_printf("%s\n", "2test");
-		if (count == 2)
+		if (ft_strstr(params.buf, "Plateau"))
 		{
-			i = 0;
-			while (buf[i] > '9')
-				i++;
-			params.x_board = ft_atoi(&buf[i++]);
-			while (buf[i] >= '0' && buf[i] <= '9')
-				i++;
-			i++;
-			params.y_board = ft_atoi(&buf[i]);
-			//ft_printf("2%d %d\n", params.x_board, params.y_board);
-			params.board = (char **)malloc(sizeof(char *) * params.x_board);
-			i = 0;
-			while (i < params.x_board)
-			{
-				params.board[i] = (char *)malloc(params.y_board);
-				params.board[i][params.y_board] = 0;
-				i++;
-			}
+			board_making(params.buf, 0, &params);
+			continue ;
 		}
-		if (ft_strstr(buf, "Plateau"))
-		{//ft_printf("%s\n", "3test");
-			get_next_line(fd, &buf);
-			free(buf);
-			i = 0;
-		  while (i < params.x_board)
-			{
-				j = 0;
-		    k = 4;
-		    get_next_line(fd, &buf);
-		    while (k < params.y_board + 4)
-		    {
-		      params.board[i][j] = buf[k];
-		      k++;
-		      j++;
-		    }
-				//ft_printf("3%s\n", params.board[i]);
-		    //ft_printf("1%s\n", params.board[i]);
-		    free(buf);
-				i++;
-			}
-		}
-		//ft_printf("%s\n", "4test");
-		if (ft_strstr(buf, "Piece"))
+		if (ft_strstr(params.buf, "Piece"))
 		{
-			i = 0;
-		  while (buf[i] > '9')
-		    i++;
-		  params.x_figure = ft_atoi(&buf[i++]);
-		  while (buf[i] >= '0' && buf[i] <= '9')
-		    i++;
-		  i++;
-		  params.y_figure = ft_atoi(&buf[i]);
-			//ft_printf("4%d %d\n", params.x_figure, params.y_figure);
-		  //ft_printf("%d\n", params.x_figure );
-		  //ft_printf("%d\n", params.y_figure );
-		  params.figure = (char **)malloc(sizeof(char *) * params.x_figure);
-		  i = 0;
-			while (i < params.x_figure)
-		 	{
-			 	params.figure[i] = (char *)malloc(params.y_figure);
-			 	params.figure[i][params.y_figure] = 0;
-			 	i++;
-		 	}
-			free(buf);
-			i = 0;
-		  while (i < params.x_figure)
-		  {
-				j = 0;
-		    get_next_line(fd, &buf);
-		    while (j < params.y_figure)
-		    {
-		      params.figure[i][j] = buf[j];
-		      j++;
-		    }
-				//ft_printf("5%s\n", params.figure[i]);
-		    //ft_printf("1%s\n", params.figure[i]);
-		    i++;
-		    free(buf);
-		  }
-			//save_coord();
-			ft_printf("%d %d", 8, 2);
-			i = 0;
-			 while (i < params.x_figure)
-				 free(params.figure[i++]);
-			 //free(buf);
+			if (!figure_making(params.buf, 0, &params))
+				return (0);
+			continue;
 		}
-		//ft_printf("%d %d", 8, 2);
-		count++;
+		ft_strdel(&params.buf);
 	}
-
-}
-
-
-launched resources/players/vlikhotk.filler
-$$$ exec p1 : [resources/players/vlikhotk.filler]
-launched resources/players/grati.filler
-$$$ exec p2 : [resources/players/grati.filler]
-Plateau 15 17:
-    01234567890123456
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 .................
-010 .................
-011 .................
-012 ..............X..
-013 .................
-014 .................
-Piece 2 3:
-.**
-***
-
-
-launched resources/players/vlikhotk.filler
-$$$ exec p1 : [resources/players/vlikhotk.filler]
-launched resources/players/grati.filler
-$$$ exec p2 : [resources/players/grati.filler]
-Plateau 15 17:
-    01234567890123456
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 .................
-010 .................
-011 .................
-012 ..............X..
-013 .................
-014 .................
-Piece 2 3:
-.**
-.**
-
-
-
-launched resources/players/vlikhotk.filler
-launched resources/players/grati.filler
-Plateau 15 17:
-    01234567890123456
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 .................
-010 .................
-011 .................
-012 ..............X..
-013 .................
-014 .................
-Piece 2 1:
-*
-*
-<got (O): [7, 0]
-
-
-Plateau 15 17:
-    01234567890123456
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 .................
-010 .................
-011 .................
-012 ..............X..
-013 .................
-014 .................
-Piece 2 3:
-...
-***
-
-01234567890123456
-000 .................
-001 .................
-002 .................
-003 .................
-004 .................
-005 .................
-006 .................
-007 .................
-008 ..O..............
-009 .................
-010 .................
-011 .................
-012 ..............X..
-013 .................
-014 .................
-Piece 2 3:
-..*
-.**
-
-int save_coord(t_params *params)
-{
-  int i;
-  int j;
-  int count;
-  t_coordinate *coords;
-
-  i = 0;
-  j = 0;
-  count = 0;
-  coords = NULL;
-  while (i < (*params).x_figure)
-  {
-    j = 0;
-    while (j < (*params).y_figure)
-      if ((*params).figure[i][j++] == '*')
-        count++;
-    i++;
-  }
-  i = 0;
-  j = 0;
-  while (i < (*params).x_board)
-	{
-    j = 0;
-    while (j < (*params).y_board)
-    {
-    if (check_in_field(i, j, count, params) == 1)
-      {
-      	ft_printf("%s\n", "test");
-      		coord_push_back(i, j, &coords);
-          //return (1);
-      }
-      j++;
-    } 
-    i++;
-	}
-	while (coords->next)
-	{
-		ft_printf("%d %d\n", (*coords).x, (*coords).y);
-		coords = coords->next;
-	}
-	if (coords)
-	{
-		ft_printf("%s\n", "check");
-		choose_prime_position(coords, params);
-		return (1);
-	}
-  	return (-1);
 }

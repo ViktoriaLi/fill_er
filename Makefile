@@ -10,12 +10,12 @@
 #                                                                              #
 #******************************************************************************#
 
-NAME = resources/players/vlikhotk.filler
+NAME = vlikhotk.filler
 
 LIB_DIR = ./libft/
 
-SFILES = main.c general_funcs.c find_solve.c
-OFILES = main.o general_funcs.o find_solve.o
+SFILES = main.c find_solve.c
+OFILES = main.o find_solve.o
 
 VIZUALIZER = vizualizer
 SVIZ = vizualization.c general_funcs.c color_types.c
@@ -34,7 +34,7 @@ CC = gcc
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(VIZUALIZER) $(OFILES)
-	$(CC) $(OFILES) $(LIBFT) -o $(NAME)
+	$(CC) $(OFILES) general_funcs.o $(LIBFT) -o $(NAME)
 
 $(OFILES): %.o:%.c
 	$(CC) -c $< -o $@ $(CC_FLAGS) $(HEADER_FLAGS)

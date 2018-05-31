@@ -12,6 +12,18 @@
 
 #include "filler.h"
 
+void	iters_initiation(t_iter *iters)
+{
+	(*iters).x = 0;
+	(*iters).y = 0;
+	(*iters).k = 0;
+	(*iters).l = 0;
+	(*iters).m = 0;
+	(*iters).n = 0;
+	(*iters).res = -1;
+	(*iters).res1 = 0;
+}
+
 void	struct_initiation(t_params *params)
 {
 	(*params).x_board = 0;
@@ -37,5 +49,17 @@ void	coords_parsing(int *x, int *y, char *buf)
 	while (buf[i] != ' ')
 		i++;
 	*y = ft_atoi(&buf[++i]);
-	ft_strdel(&buf);
+}
+
+void	free_list(t_coordinate **list)
+{
+	if (list && *list)
+	{
+		while (*list)
+		{
+			free(*list);
+			*list = (*list)->next;
+		}
+		*list = NULL;
+	}
 }
